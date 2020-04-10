@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>My New Hugo Site</title>
+    <link>https://marshyon.github.io/marshyon/</link>
+    <description>Recent content on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 10 Apr 2020 12:29:51 +0100</lastBuildDate>
+    
+	<atom:link href="https://marshyon.github.io/marshyon/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Outbreak</title>
+      <link>https://marshyon.github.io/marshyon/articles/commentary/c19/</link>
+      <pubDate>Fri, 10 Apr 2020 12:29:51 +0100</pubDate>
+      
+      <guid>https://marshyon.github.io/marshyon/articles/commentary/c19/</guid>
+      <description>Corona 19 Perhaps the worst viral outbreak since so called Spanish Flu of the post first world war era has reared its ugly head and torn through everyones lives, families, life styles, welfare and our very existence.
+What will this mean for us now and in the future, we will only know in time but for certain, we should never go back to the way of doing things before the virus outbreak as if nothing ever happened, assuming a business as normal approach.</description>
+    </item>
+    
+    <item>
+      <title>Its an Amazing Place to Be</title>
+      <link>https://marshyon.github.io/marshyon/articles/commentary/amazing-place-to-be/</link>
+      <pubDate>Fri, 10 Apr 2020 12:22:01 +0100</pubDate>
+      
+      <guid>https://marshyon.github.io/marshyon/articles/commentary/amazing-place-to-be/</guid>
+      <description>2020 In this year we find ourselves in a tremendously new, unfamiliar, strange, sometimes confusing and even exciting new world of technology and directions that once only a few years ago would seem impossible even implausable.
+Over 20 years ago I started to specialise in open source, specifically Linux based services and systems. I did this as I refuse to use pirated software and although I have no objection to using and paying for licensed software, I could not at the time justify the high cost of commercial software supplied by the likes of Microsoft and other giants.</description>
+    </item>
+    
+    <item>
+      <title>Deploy a Go Web Service as an Azure Web Application Using Docker</title>
+      <link>https://marshyon.github.io/marshyon/articles/devops/deploy-a-go-web-service-as-an-azure-web-application-using-docker/</link>
+      <pubDate>Fri, 10 Apr 2020 12:54:58 +0100</pubDate>
+      
+      <guid>https://marshyon.github.io/marshyon/articles/devops/deploy-a-go-web-service-as-an-azure-web-application-using-docker/</guid>
+      <description>Azure Web Applications can only support a limited number of languages and whilst Go was supported for a time it is no longer so as an alternative is to serve a custom Docker image with a Go web application within it, hosted on a public registry such as Docker Hub or a private one within Azure itself. The following focuses on the use of a private registry hosted in Azure.</description>
+    </item>
+    
+    <item>
+      <title>Installation</title>
+      <link>https://marshyon.github.io/marshyon/getting-started/installation/</link>
+      <pubDate>Wed, 08 Apr 2020 17:45:07 +0100</pubDate>
+      
+      <guid>https://marshyon.github.io/marshyon/getting-started/installation/</guid>
+      <description>The following steps are here to help you initialize your new website. If you don&amp;rsquo;t know Hugo at all, we strongly suggest you learn more about it by following this great documentation for beginners.
+Create your project Hugo provides a new command to create a new website.
+hugo new site &amp;lt;new_project&amp;gt;  Install the theme Install the Hugo-theme-learn theme by following this documentation
+This theme&amp;rsquo;s repository is: https://github.com/matcornic/hugo-theme-learn.git
+Alternatively, you can download the theme as .</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.54.0" />
+    <meta name="description" content="">
+
+
+    <link rel="icon" href="/marshyon/images/favicon.png" type="image/png">
+
+    <title>Deploy a Go Web Service as an Azure Web Application Using Docker :: My New Hugo Site</title>
+
+    
+    <link href="/marshyon/css/nucleus.css?1586531399" rel="stylesheet">
+    <link href="/marshyon/css/fontawesome-all.min.css?1586531399" rel="stylesheet">
+    <link href="/marshyon/css/hybrid.css?1586531399" rel="stylesheet">
+    <link href="/marshyon/css/featherlight.min.css?1586531399" rel="stylesheet">
+    <link href="/marshyon/css/perfect-scrollbar.min.css?1586531399" rel="stylesheet">
+    <link href="/marshyon/css/auto-complete.css?1586531399" rel="stylesheet">
+    <link href="/marshyon/css/atom-one-dark-reasonable.css?1586531399" rel="stylesheet">
+    <link href="/marshyon/css/theme.css?1586531399" rel="stylesheet">
+    <link href="/marshyon/css/hugo-theme.css?1586531399" rel="stylesheet">
+    
+
+    <script src="/marshyon/js/jquery-3.3.1.min.js?1586531399"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="/marshyon/articles/devops/deploy-a-go-web-service-as-an-azure-web-application-using-docker/">
+    <nav id="sidebar" class="">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<a id="logo" href="https://marshyon.github.io/marshyon">
+ <i class="fas fa-book-reader" style="font-size:100px"></i>
+</a>
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/marshyon/js/lunr.min.js?1586531399"></script>
+<script type="text/javascript" src="/marshyon/js/auto-complete.js?1586531399"></script>
+<script type="text/javascript">
+    
+        var baseurl = "https:\/\/marshyon.github.io\/marshyon";
+    
+</script>
+<script type="text/javascript" src="/marshyon/js/search.js?1586531399"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/marshyon/getting-started/" title="Getting Started with Hugo" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/marshyon/getting-started/">
+          <b>1. </b>Getting Started with Hugo
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/marshyon/getting-started/installation/" title="Installation" class="dd-item ">
+        <a href="/marshyon/getting-started/installation/">
+        Installation
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/marshyon/articles/" title="Articles" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="/marshyon/articles/">
+          <b>2. </b>Articles
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/marshyon/articles/devops/" title="Devops" class="dd-item 
+        parent
+        
+        
+        ">
+      <a href="/marshyon/articles/devops/">
+          <b>2.1. </b>Devops
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/marshyon/articles/devops/deploy-a-go-web-service-as-an-azure-web-application-using-docker/" title="Deploy a Go Web Service as an Azure Web Application Using Docker" class="dd-item active">
+        <a href="/marshyon/articles/devops/deploy-a-go-web-service-as-an-azure-web-application-using-docker/">
+        Deploy a Go Web Service as an Azure Web Application Using Docker
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/marshyon/articles/commentary/" title="Comentary" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/marshyon/articles/commentary/">
+          <b>2.2. </b>Comentary
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/marshyon/articles/commentary/c19/" title="Outbreak" class="dd-item ">
+        <a href="/marshyon/articles/commentary/c19/">
+        Outbreak
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/marshyon/articles/commentary/amazing-place-to-be/" title="Its an Amazing Place to Be" class="dd-item ">
+        <a href="/marshyon/articles/commentary/amazing-place-to-be/">
+        Its an Amazing Place to Be
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+
+    
+    <section id="footer">
+      <p>Built with <a href="https://github.com/matcornic/hugo-theme-learn"><i class="fas fa-heart"></i></a> from <a href="https://getgrav.org">Grav</a> and <a href="https://gohugo.io/">Hugo</a></p>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/marshyon/'>My New Hugo Site</a> > <a href='/marshyon/articles/'>Articles</a> > <a href='/marshyon/articles/devops/'>Devops</a> > Deploy a Go Web Service as an Azure Web Application Using Docker
+          
+         
+          
+         
+          
+         
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#references">References :</a></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              Deploy a Go Web Service as an Azure Web Application Using Docker
+            </h1>
+          
+
+        
+
+
+
+
+
+<p>Azure Web Applications can only support a limited number of languages and whilst Go was supported for a time it is no longer so as an alternative is to serve a custom Docker image with a Go web application within it, hosted on a public registry such as Docker Hub or a private one within Azure itself. The following focuses on the use of a private registry hosted in Azure.</p>
+
+<p>To follow the procedure outlined below the following prerequisites will need to be installed :</p>
+
+<ul>
+<li>Docker</li>
+<li>azure cli</li>
+<li>Go</li>
+</ul>
+
+<p>Pretty much all that follows is run from a bash shell under Linux, Mac or Ubuntu sub system for windows. The command &lsquo;jq&rsquo; will be used and if it is not already installed it will also be needed :</p>
+
+<pre><code>sudo apt install jq
+</code></pre>
+
+<p>With the az command installed, it is also assumed that there is already an Azure account available and that this is authenticated and ready to use with</p>
+
+<pre><code>az login
+</code></pre>
+
+<p>The following is the server.go file</p>
+
+<pre><code>package main
+
+import (
+	&quot;context&quot;
+	&quot;fmt&quot;
+	&quot;log&quot;
+	&quot;net/http&quot;
+	&quot;os&quot;
+	&quot;os/signal&quot;
+	&quot;syscall&quot;
+	&quot;time&quot;
+
+	&quot;github.com/gorilla/mux&quot;
+	&quot;gopkg.in/natefinch/lumberjack.v2&quot;
+)
+
+func handler(w http.ResponseWriter, r *http.Request) {
+	query := r.URL.Query()
+	name := query.Get(&quot;name&quot;)
+	if name == &quot;&quot; {
+		name = &quot;Guest&quot;
+	}
+	log.Printf(&quot;Received request for %s\n&quot;, name)
+	w.Write([]byte(fmt.Sprintf(&quot;Hello, %s\n&quot;, name)))
+}
+
+func main() {
+	// Create Server and Route Handlers
+	r := mux.NewRouter()
+
+	r.HandleFunc(&quot;/&quot;, handler)
+
+	srv := &amp;http.Server{
+		Handler:      r,
+		Addr:         &quot;:8080&quot;,
+		ReadTimeout:  10 * time.Second,
+		WriteTimeout: 10 * time.Second,
+	}
+
+	// Configure Logging
+	LOG_FILE_LOCATION := os.Getenv(&quot;LOG_FILE_LOCATION&quot;)
+	if LOG_FILE_LOCATION != &quot;&quot; {
+		log.SetOutput(&amp;lumberjack.Logger{
+			Filename:   LOG_FILE_LOCATION,
+			MaxSize:    500, // megabytes
+			MaxBackups: 3,
+			MaxAge:     28,   //days
+			Compress:   true, // disabled by default
+		})
+	}
+
+	// Start Server
+	go func() {
+		log.Println(&quot;Starting Server&quot;)
+		if err := srv.ListenAndServe(); err != nil {
+			log.Fatal(err)
+		}
+	}()
+
+	// Graceful Shutdown
+	waitForShutdown(srv)
+}
+
+func waitForShutdown(srv *http.Server) {
+	interruptChan := make(chan os.Signal, 1)
+	signal.Notify(interruptChan, os.Interrupt, syscall.SIGINT, syscall.SIGTERM)
+
+	// Block until we receive our signal.
+	&lt;-interruptChan
+
+	// Create a deadline to wait for.
+	ctx, cancel := context.WithTimeout(context.Background(), time.Second*10)
+	defer cancel()
+	srv.Shutdown(ctx)
+
+	log.Println(&quot;Shutting down&quot;)
+	os.Exit(0)
+}
+</code></pre>
+
+<p>The following is the Dockerfile which will be used to build a new docker image based on the Go application above</p>
+
+<pre><code>FROM golang:latest as builder
+
+# Add Maintainer Info
+LABEL maintainer=&quot;Jon Brookes &lt;marshyon@gmail.com&gt;&quot;
+
+# Set the Current Working Directory inside the container
+WORKDIR /app
+
+# Copy go mod and sum files
+COPY go.mod go.sum ./
+
+# Download all dependencies. Dependencies will be cached if the go.mod and go.sum files are not changed
+RUN go mod download
+
+# Copy the source from the current directory to the Working Directory inside the container
+COPY . .
+
+# Build the Go app
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main 
+FROM alpine:latest  
+
+RUN apk --no-cache add ca-certificates
+
+WORKDIR /root/
+
+# Copy the Pre-built binary file from the previous stage
+COPY --from=builder /app/main .
+
+# Expose port 8080 to the outside world
+EXPOSE 8080
+
+# Command to run the executable
+CMD [&quot;./main&quot;]
+</code></pre>
+
+<p>Here is the directory structure for the above files:</p>
+
+<pre><code>go-docker-app/
+├── Dockerfile
+└── server.go
+</code></pre>
+
+<p>Create the above directory, cd into it, create the Dockerfile and server.go files as above and run :</p>
+
+<pre><code>cd go-docker
+go mod init github.com/&lt;your github name&gt;/go-docker-app
+go build
+</code></pre>
+
+<p>A docker image is then built with :</p>
+
+<pre><code>docker build -t go-web-app .
+</code></pre>
+
+<p>The following deploy.sh script creates an Azure Web Application that serves our docker image ( ensure that the word uniquename is replaced with something unique and reflective of the intended application ) :</p>
+
+<pre><code>#!/usr/bin/bash
+
+# replace 'uniquename' with your own unique name
+
+# define variables for repeated use in the current script
+export RESOURCE_GROUP=&quot;uniquenameResourceGroup&quot;
+export AZURE_REGISTRY_NAME=&quot;uniquenameRegisry&quot;
+export DOCKER_IMAGE_NAME=&quot;uniquename-custom-docker-image&quot;
+export DOCKER_IMAGE_TAG=&quot;v1.0.0&quot;
+export APP_SERVICE_PLAN_NAME=&quot;uniquenameAppServicePlan&quot;
+export APP_NAME=&quot;uniquenameApplicaton&quot; # this will need to be unique
+export APP_PORT=&quot;8080&quot; # this is the port number our docker image is configured to listen on
+
+# build our docker image
+docker build -t ${DOCKER_IMAGE_NAME} .
+
+# create a resource group into which we can store resources pertinent to this activity
+az group create --name ${RESOURCE_GROUP} --location &quot;UK South&quot;
+
+# create a private registry in order to store our docker image
+az acr create --name ${AZURE_REGISTRY_NAME} \
+--resource-group ${RESOURCE_GROUP} --sku Basic \
+--admin-enabled true
+
+
+# in order to authenticate against our newly created registry, get user name and password for this
+CREDENTIAL_JSON=$(az acr credential show --name ${AZURE_REGISTRY_NAME})
+# the output of the credential show command will be in json format and we need to extract 
+# - passwords .. value ( the first or second it doesn't matter which
+# - username ( this will be the registry name )
+# the following jq commands will do this for us
+export REGISTRY_USERNAME=$(echo ${CREDENTIAL_JSON} | jq -r '.username')
+export REGISTRY_PASSWORD=$(echo ${CREDENTIAL_JSON} | jq -r &quot;[.passwords][0][0]|.value&quot;)
+
+# now we authenticate against our newly created docker registry
+docker login ${AZURE_REGISTRY_NAME}.azurecr.io --username ${REGISTRY_USERNAME} --password ${REGISTRY_PASSWORD}
+
+#  tag our recently created custom docker image
+docker tag ${DOCKER_IMAGE_NAME} ${AZURE_REGISTRY_NAME}.azurecr.io/${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}
+
+# push our tagged image to our private registry
+docker push ${AZURE_REGISTRY_NAME}.azurecr.io/${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}
+
+# list our docker images 
+az acr repository list -n ${AZURE_REGISTRY_NAME}
+
+# create an Azure App Service Plan
+az appservice plan create --name ${APP_SERVICE_PLAN_NAME} \
+--resource-group ${RESOURCE_GROUP} --sku B1 --is-linux
+
+# create the web app into which we will deploy our container
+az webapp create --resource-group ${RESOURCE_GROUP} \
+--plan ${APP_SERVICE_PLAN_NAME} --name ${APP_NAME} \
+--deployment-container-image-name ${AZURE_REGISTRY_NAME}.azurecr.io/${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}
+
+# give the application credentials which it will need to log in to our private registry 
+az webapp config container set --name ${APP_NAME} \
+--resource-group ${RESOURCE_GROUP} \
+--docker-custom-image-name ${AZURE_REGISTRY_NAME}.azurecr.io/${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG} \
+--docker-registry-server-url https://${AZURE_REGISTRY_NAME}.azurecr.io \
+--docker-registry-server-user ${REGISTRY_USERNAME} \
+--docker-registry-server-password ${REGISTRY_PASSWORD}
+
+# configure environment variables for the docker instance
+az webapp config appsettings set --resource-group ${RESOURCE_GROUP} --name ${APP_NAME} --settings WEBSITES_PORT=${APP_PORT}
+</code></pre>
+
+<p>The application should now be available at</p>
+
+<pre><code>http://${APP_NAME}.azurewebsites.net
+</code></pre>
+
+<h2 id="references">References :</h2>
+
+<ul>
+<li><a href="https://www.callicoder.com/docker-golang-image-container-example/">Building Docker Containers for Go Applications</a></li>
+<li><a href="https://docs.microsoft.com/en-us/azure/app-service/containers/tutorial-custom-docker-image">Tutorial: Build a custom image and run in App Service from a private registry</a></li>
+</ul>
+
+
+<footer class="footline">
+	
+</footer>
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="/marshyon/articles/devops/" title="Devops"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="/marshyon/articles/commentary/" title="Comentary" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/marshyon/js/clipboard.min.js?1586531399"></script>
+    <script src="/marshyon/js/perfect-scrollbar.min.js?1586531399"></script>
+    <script src="/marshyon/js/perfect-scrollbar.jquery.min.js?1586531399"></script>
+    <script src="/marshyon/js/jquery.sticky.js?1586531399"></script>
+    <script src="/marshyon/js/featherlight.min.js?1586531399"></script>
+    <script src="/marshyon/js/highlight.pack.js?1586531399"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/marshyon/js/modernizr.custom-3.6.0.js?1586531399"></script>
+    <script src="/marshyon/js/learn.js?1586531399"></script>
+    <script src="/marshyon/js/hugo-learn.js?1586531399"></script>
+
+    <link href="/marshyon/mermaid/mermaid.css?1586531399" rel="stylesheet" />
+    <script src="/marshyon/mermaid/mermaid.js?1586531399"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    
+
+  </body>
+</html>
+

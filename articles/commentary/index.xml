@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Comentary on My New Hugo Site</title>
+    <link>https://marshyon.github.io/marshyon/articles/commentary/</link>
+    <description>Recent content in Comentary on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 10 Apr 2020 12:22:48 +0100</lastBuildDate>
+    
+	<atom:link href="https://marshyon.github.io/marshyon/articles/commentary/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Outbreak</title>
+      <link>https://marshyon.github.io/marshyon/articles/commentary/c19/</link>
+      <pubDate>Fri, 10 Apr 2020 12:29:51 +0100</pubDate>
+      
+      <guid>https://marshyon.github.io/marshyon/articles/commentary/c19/</guid>
+      <description>Corona 19 Perhaps the worst viral outbreak since so called Spanish Flu of the post first world war era has reared its ugly head and torn through everyones lives, families, life styles, welfare and our very existence.
+What will this mean for us now and in the future, we will only know in time but for certain, we should never go back to the way of doing things before the virus outbreak as if nothing ever happened, assuming a business as normal approach.</description>
+    </item>
+    
+    <item>
+      <title>Its an Amazing Place to Be</title>
+      <link>https://marshyon.github.io/marshyon/articles/commentary/amazing-place-to-be/</link>
+      <pubDate>Fri, 10 Apr 2020 12:22:01 +0100</pubDate>
+      
+      <guid>https://marshyon.github.io/marshyon/articles/commentary/amazing-place-to-be/</guid>
+      <description>2020 In this year we find ourselves in a tremendously new, unfamiliar, strange, sometimes confusing and even exciting new world of technology and directions that once only a few years ago would seem impossible even implausable.
+Over 20 years ago I started to specialise in open source, specifically Linux based services and systems. I did this as I refuse to use pirated software and although I have no objection to using and paying for licensed software, I could not at the time justify the high cost of commercial software supplied by the likes of Microsoft and other giants.</description>
+    </item>
+    
+  </channel>
+</rss>
