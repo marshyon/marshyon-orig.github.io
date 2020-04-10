@@ -13,6 +13,11 @@
   </url>
   
   <url>
+    <loc>https://marshyon.github.io/</loc>
+    <lastmod>2020-04-08T17:47:54+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://marshyon.github.io/getting-started/</loc>
     <lastmod>2020-04-08T17:38:14+01:00</lastmod>
   </url>
@@ -44,12 +49,6 @@
   
   <url>
     <loc>https://marshyon.github.io/categories/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://marshyon.github.io/</loc>
-    <lastmod>2020-04-10T12:29:51+01:00</lastmod>
     <priority>0</priority>
   </url>
   

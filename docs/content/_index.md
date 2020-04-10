@@ -1,7 +1,7 @@
 ---
 title: "Home"
 date: 2020-04-08T17:47:54+01:00
-draft: true
+draft: false
 weight: 1
 ---
 
