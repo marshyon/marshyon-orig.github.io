@@ -2,6 +2,7 @@
 title: "Publishing a Hugo Site to Github Io"
 date: 2020-04-10T17:18:18+01:00
 draft: false
+weight: 2
 ---
 
 ## Setting up your Github account
