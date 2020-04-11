@@ -1,7 +1,6 @@
 baseURL = "https://marshyon.github.io"
-#baseURL = "http://localhost:5500"
 languageCode = "en-us"
-title = "My New Hugo Site"
+title = "Marshyon Hugo Site"
 theme = "hugo-theme-learn"
 publishDir = ".."
 

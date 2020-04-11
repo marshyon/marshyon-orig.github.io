@@ -37,11 +37,11 @@ now I have my content available at
 https://marshyon.github.io
 ```
 
-Any content ( html, css, javascript, jpg, png etc ... ) that gets commited to your newly created repository will then automatically appear at the <your_gith_user_name>.github.io address
+Any content ( html, css, javascript, jpg, png etc ... ) that gets commited to your newly created repository will then automatically appear at **your_gith_user_name**.github.io address
 
 There can be a time lag between your pushing your additions / changes to github of up to 20 minutes - accourding to Githubs own documentation so dont expect things to appear straight away, although they might, depenindg upon Githubs own current work loads. This is only fair in my view, after all, this is a free service so we cant really complain.
 
-## Conigure Hugo for use in Github.io hosting
+## Configure Hugo for use in Github.io hosting
 
 Create a new directory structure to host your new git account with the following :
 

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Getting Started with Hugo on My New Hugo Site</title>
+    <title>Getting Started with Hugo on Marshyon Hugo Site</title>
     <link>https://marshyon.github.io/getting-started/</link>
-    <description>Recent content in Getting Started with Hugo on My New Hugo Site</description>
+    <description>Recent content in Getting Started with Hugo on Marshyon Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 08 Apr 2020 17:38:14 +0100</lastBuildDate>
