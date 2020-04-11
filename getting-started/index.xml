@@ -12,6 +12,16 @@
     
     
     <item>
+      <title>Publishing a Hugo Site to Github Io</title>
+      <link>https://marshyon.github.io/getting-started/publishing-a-hugo-site-to-github-io/</link>
+      <pubDate>Fri, 10 Apr 2020 17:18:18 +0100</pubDate>
+      
+      <guid>https://marshyon.github.io/getting-started/publishing-a-hugo-site-to-github-io/</guid>
+      <description>Setting up your Github account To publish to github.io for free, you need to have a current public Github account. Mine is already created under the username of marshyon so this is the name I used to publish this site under. A github.io account is available to all Github account users with their username as subdomain to github.io, for example:
+https://marshyon.github.io  so you will, when activated have access to your content from a similar url but with your username in place of marshyon of course.</description>
+    </item>
+    
+    <item>
       <title>Installation</title>
       <link>https://marshyon.github.io/getting-started/installation/</link>
       <pubDate>Wed, 08 Apr 2020 17:45:07 +0100</pubDate>
