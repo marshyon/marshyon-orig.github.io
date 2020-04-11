@@ -15,7 +15,7 @@ This is our starter for 10 documentation site. It uses [Hugo](https://gohugo.io/
 
 ## Contribute to this documentation
 
-Feel free to update this content, just click the Edit this page link displayed on top right of each page, and pullrequest it
+Feel free to fork this [repository](https://github.com/marshyon/marshyon.github.io) and submit pull requests.
 
 {{% notice note %}}
 
