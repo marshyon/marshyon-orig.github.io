@@ -1,6 +1,8 @@
 # Quick setup of a Hugo Learn theme site
 
-The hugo site is to be found in the `docs` directory.
+This site is hosted at [https://marshyon.github.io/](https://marshyon.github.io/).
+
+The hugo site code is to be found in the `docs` directory.
 
 To try out this site yourself, clone this repo and cd into the `docs` directory and 
 
