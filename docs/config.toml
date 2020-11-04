@@ -1,0 +1,9 @@
+baseURL = "https://marshyon.github.io"
+languageCode = "en-us"
+title = "Marshyon Hugo Site"
+theme = "hugo-theme-learn"
+publishDir = ".."
+
+[outputs]
+	home = [ "HTML", "JSON"]
+	page = [ "HTML"]
