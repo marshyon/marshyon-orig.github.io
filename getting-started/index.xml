@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Getting Started with Hugo on Not Applicable Doc</title>
+    <link>https://doc.notapplicable.info/getting-started/</link>
+    <description>Recent content in Getting Started with Hugo on Not Applicable Doc</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 08 Apr 2020 17:38:14 +0100</lastBuildDate><atom:link href="https://doc.notapplicable.info/getting-started/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Installation</title>
+      <link>https://doc.notapplicable.info/getting-started/installation/</link>
+      <pubDate>Wed, 08 Apr 2020 17:45:07 +0100</pubDate>
+      
+      <guid>https://doc.notapplicable.info/getting-started/installation/</guid>
+      <description>The following steps are here to help you initialize your new website. If you don&amp;rsquo;t know Hugo at all, we strongly suggest you learn more about it by following this great documentation for beginners.
+Create your project Hugo provides a new command to create a new website.
+hugo new site &amp;lt;new_project&amp;gt; Install the theme Install the Hugo-theme-learn theme by following this documentation
+This theme&amp;rsquo;s repository is: https://github.com/matcornic/hugo-theme-learn.git
+Alternatively, you can download the theme as .</description>
+    </item>
+    
+    <item>
+      <title>Publishing a Hugo Site to Github Io</title>
+      <link>https://doc.notapplicable.info/getting-started/publishing-a-hugo-site-to-github-io/</link>
+      <pubDate>Fri, 10 Apr 2020 17:18:18 +0100</pubDate>
+      
+      <guid>https://doc.notapplicable.info/getting-started/publishing-a-hugo-site-to-github-io/</guid>
+      <description>Setting up your Github account To publish to github.io for free, you need to have a current public Github account. Mine is already created under the username of marshyon so this is the name I used to publish this site under. A github.io account is available to all Github account users with their username as subdomain to github.io, for example:
+https://marshyon.github.io so you will, when activated have access to your content from a similar url but with your username in place of marshyon of course.</description>
+    </item>
+    
+  </channel>
+</rss>

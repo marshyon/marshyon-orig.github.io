@@ -1,0 +1,9 @@
+baseURL = "https://doc.notapplicable.info"
+languageCode = "en-us"
+title = "Not Applicable Doc"
+theme = "hugo-theme-learn"
+publishDir = ".."
+
+[outputs]
+	home = [ "HTML", "JSON"]
+	page = [ "HTML"]

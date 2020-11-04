@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://doc.notapplicable.info/articles/devops/</loc>
+    <lastmod>2020-04-10T12:54:14+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://doc.notapplicable.info/articles/commentary/c19/</loc>
+    <lastmod>2020-04-10T12:29:51+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://doc.notapplicable.info/</loc>
+    <lastmod>2020-04-08T17:47:54+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://doc.notapplicable.info/getting-started/installation/</loc>
+    <lastmod>2020-04-08T17:45:07+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://doc.notapplicable.info/getting-started/</loc>
+    <lastmod>2020-04-08T17:38:14+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://doc.notapplicable.info/getting-started/publishing-a-hugo-site-to-github-io/</loc>
+    <lastmod>2020-04-10T17:18:18+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://doc.notapplicable.info/articles/commentary/</loc>
+    <lastmod>2020-04-10T12:22:48+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://doc.notapplicable.info/articles/commentary/amazing-place-to-be/</loc>
+    <lastmod>2020-04-10T12:22:01+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://doc.notapplicable.info/articles/</loc>
+    <lastmod>2020-04-10T12:16:59+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://doc.notapplicable.info/articles/devops/deploy-a-go-web-service-as-an-azure-web-application-using-docker/</loc>
+    <lastmod>2020-04-10T12:54:58+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://doc.notapplicable.info/categories/</loc>
+  </url>
+  
+  <url>
+    <loc>https://doc.notapplicable.info/tags/</loc>
+  </url>
+  
+</urlset>
