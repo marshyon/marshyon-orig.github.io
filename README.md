@@ -2,7 +2,7 @@
 
 This site is hosted at [https://marshyon.github.io/](https://marshyon.github.io/).
 
-The hugo site code is to be found in the `docs` directory.
+The hugo site code is to be found in the `hugo` directory.
 
 To try out this site yourself, clone this repo and cd into the `docs` directory and 
 
