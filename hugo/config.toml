@@ -4,6 +4,9 @@ title = "Not Applicable Doc"
 theme = "hugo-theme-learn"
 publishDir = ".."
 
+[params]
+	themeVariant = "green"
+
 [outputs]
 	home = [ "HTML", "JSON"]
 	page = [ "HTML"]
