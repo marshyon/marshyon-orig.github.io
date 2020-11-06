@@ -210,6 +210,14 @@ kubectl get pods --all-namespaces
 and this should firstly create the environment variable `KUBECONFIG`, recognised by `kubectl` to contain the location of the credentials file and secondly
 list all pods in all namespaces
 
+## Delete the AWS K8s cluster with Terraform
+
+To delete the K8s cluster created with Terraform, in the same directory as `terraform apply` command was executed :
+
+```
+terraform destroy
+```
+
 # References
 
 https://learnk8s.io/terraform-eks
