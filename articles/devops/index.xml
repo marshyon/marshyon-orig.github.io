@@ -13,7 +13,7 @@
       <pubDate>Fri, 06 Nov 2020 14:10:58 +0100</pubDate>
       
       <guid>https://doc.notapplicable.info/articles/devops/deploying_kubernetes_clusters_with_different_cloud_providers/</guid>
-      <description>K8s in any cloud platform is essentially just K8s, in that that it is still fundamentally Kubernetes &amp;lsquo;under the hood&amp;rsquo;. However there are diffent ways in which to deploy K8s in AWS for example as oposed to Azure, Google cloud and others.
+      <description>K8s in any cloud platform is essentially just K8s, in that that it is still fundamentally Kubernetes &amp;lsquo;under the hood&amp;rsquo;. However there are different ways in which to deploy K8s in AWS for example as opposed to Azure, Google cloud and others.
 When exposing services to the internet or rather, network sources outside that of the cluster, there are differences brought about by the way the prevailing service integrates with said exposure.</description>
     </item>
     

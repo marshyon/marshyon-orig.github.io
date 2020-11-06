@@ -4,15 +4,37 @@ date: 2020-11-06T14:10:58+01:00
 draft: false
 ---
 
-K8s in any cloud platform is essentially just K8s, in that that it is still fundamentally Kubernetes 'under the hood'. However there are diffent ways in which to deploy K8s in AWS for example as oposed to Azure, Google cloud and others.
+K8s in any cloud platform is essentially just K8s, in that that it is still fundamentally Kubernetes 'under the hood'. However there are different ways in which to deploy K8s in AWS for example as opposed to Azure, Google cloud and others.
 
 When exposing services to the internet or rather, network sources outside that of the cluster, there are differences brought about by 
 the way the prevailing service integrates with said exposure. Azure, Amazon and Google all have their own 'Ingress' load balancer
-integrations. We are not entirely limited to the the stock provisoin from each providor. For example Nginx offers an alternative Ingress load balancer solution that runs as a service within the cluster as do those provided by the big 3 and others. So we have lots of options however in the simplest form, each providor has an Ingress and integration layer that creates a load balancer outside of the cluster that is specific to each cloud platform.
+integrations. We are not entirely limited to the the stock provision from each provider. For example Nginx offers an alternative Ingress load balancer solution that runs as a service within the cluster as do those provided by the big 3 and others. So we have lots of options however in the simplest form, each provider has an Ingress and integration layer that creates a load balancer outside of the cluster that is specific to each cloud platform.
 
-# AWS
+### Prerequisites for K8s and Terraform
 
-## Prerequisites 
+__kubectl__
+
+```
+curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"
+chmod +x ./kubectl
+sudo mv kubectl /usr/local/bin
+```
+
+__terraform__
+
+This is only required if you want to use terraform (ofcourse)
+
+download terraform zip file from https://www.terraform.io/downloads.html
+
+```
+unzip /mnt/c/Users/jon/Downloads/terraform_0.13.5_linux_amd64.zip
+sudo mv terraform /usr/local/bin/terraform
+``` 
+
+
+## AWS
+
+### Prerequisites for AWS
 
 I've found that implementing K8s using command line tools such as Terraform using Linux to do so gives me best results but this is my opinion having worked on Linux for > 10 years and being entirely happy with bash which most K8s howtos use. Windows WSL is an adequate Linux environment for this so Windows users are in no way out of options. Mac users are all cool, so they can handle anything. If your using Linux as your core OS there nees nothing more to be said.
 
@@ -54,25 +76,7 @@ sudo mv aws-iam-authenticator /usr/local/bin
 
 for the latest installation see [https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html](https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html)
 
-__kubectl__
-
-```
-curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"
-chmod +x ./kubectl
-sudo mv kubectl /usr/local/bin
-```
-
-__terraform__
-
-This is only required if you want to use terraform (ofcourse)
-
-download terraform zip file from https://www.terraform.io/downloads.html
-
-```
-unzip /mnt/c/Users/jon/Downloads/terraform_0.13.5_linux_amd64.zip
-sudo mv terraform /usr/local/bin/terraform
-``` 
-## List Clusters in AWS
+### List Clusters in AWS
 
 We need an easy way to know if there are clusters already created in our account. Heres a quick way to get that information :
 
@@ -86,7 +90,7 @@ aws eks list-clusters
 In this example, there are no clusters. This is good as at this point nothing is deployed 
 
 
-## Create an AWS K8s cluster with eksctl
+### Create an AWS K8s cluster with eksctl
 
 a cluster in AWS can be created with a single command :
 
@@ -103,14 +107,14 @@ eksctl create cluster \
 
 This can take some time to complete. Often over 10 minutes so be prepared to wait.
 
-## Delete the AWS K8s cluster with eksctl
+### Delete the AWS K8s cluster with eksctl
 
 ```
 eksctl delete cluster --name myk8s-cluster --region eu-west-2
 ```
 
 
-## Create an AWS K8s with Terraform
+### Create an AWS K8s with Terraform
 
 with a file called for example `main.tf`
 
@@ -199,7 +203,7 @@ terraform plan
 terraform apply
 ```
 
-if successefull, the above will create a credentials file within the same directory which may be used to then authenticate against the K8s
+if successful, the above will create a credentials file within the same directory which may be used to then authenticate against the K8s
 cluster :
 
 ```
@@ -210,12 +214,40 @@ kubectl get pods --all-namespaces
 and this should firstly create the environment variable `KUBECONFIG`, recognised by `kubectl` to contain the location of the credentials file and secondly
 list all pods in all namespaces
 
-## Delete the AWS K8s cluster with Terraform
+### Delete the AWS K8s cluster with Terraform
 
 To delete the K8s cluster created with Terraform, in the same directory as `terraform apply` command was executed :
 
 ```
 terraform destroy
+```
+
+## Google Cloud
+
+### Prerequisites for Google Cloud
+
+follow installation instructions to install `gcloud` command line interface at :
+
+https://cloud.google.com/sdk/docs/install
+
+### Initialize Google Cloud Environment
+
+From the Google Cloud console, create a project then initialize Google Cloud command line environment to use it with :
+
+```
+gcloud init
+```
+
+### Create cluster
+
+```
+gcloud container clusters create kubia --num-nodes 3 --machine-type e2-small
+```
+
+### Delete cluster
+
+```
+gcloud container clusters delete kubia
 ```
 
 # References

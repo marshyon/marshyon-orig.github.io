@@ -12,21 +12,21 @@
     <title>Deploying Kubernetes Clusters with a Cloud Provider :: Not Applicable Doc</title>
 
     
-    <link href="/css/nucleus.css?1604678055" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1604678055" rel="stylesheet">
-    <link href="/css/hybrid.css?1604678055" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1604678055" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1604678055" rel="stylesheet">
-    <link href="/css/auto-complete.css?1604678055" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1604678055" rel="stylesheet">
-    <link href="/css/theme.css?1604678055" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1604678055" rel="stylesheet">
+    <link href="/css/nucleus.css?1604701879" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1604701879" rel="stylesheet">
+    <link href="/css/hybrid.css?1604701879" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1604701879" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1604701879" rel="stylesheet">
+    <link href="/css/auto-complete.css?1604701879" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1604701879" rel="stylesheet">
+    <link href="/css/theme.css?1604701879" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1604701879" rel="stylesheet">
     
-    <link href="/css/theme-green.css?1604678055" rel="stylesheet">
+    <link href="/css/theme-green.css?1604701879" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1604678055"></script>
+    <script src="/js/jquery-3.3.1.min.js?1604701879"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -63,14 +63,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1604678055"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1604678055"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1604701879"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1604701879"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/doc.notapplicable.info";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1604678055"></script>
+<script type="text/javascript" src="/js/search.js?1604701879"></script>
 
     
   </div>
@@ -348,12 +348,29 @@
     <div class="wrapper">
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#prerequisites">Prerequisites</a></li>
-    <li><a href="#list-clusters-in-aws">List Clusters in AWS</a></li>
-    <li><a href="#create-an-aws-k8s-cluster-with-eksctl">Create an AWS K8s cluster with eksctl</a></li>
-    <li><a href="#delete-the-aws-k8s-cluster-with-eksctl">Delete the AWS K8s cluster with eksctl</a></li>
-    <li><a href="#create-an-aws-k8s-with-terraform">Create an AWS K8s with Terraform</a></li>
-    <li><a href="#delete-the-aws-k8s-cluster-with-terraform">Delete the AWS K8s cluster with Terraform</a></li>
+    <li>
+      <ul>
+        <li><a href="#prerequisites-for-k8s-and-terraform">Prerequisites for K8s and Terraform</a></li>
+      </ul>
+    </li>
+    <li><a href="#aws">AWS</a>
+      <ul>
+        <li><a href="#prerequisites-for-aws">Prerequisites for AWS</a></li>
+        <li><a href="#list-clusters-in-aws">List Clusters in AWS</a></li>
+        <li><a href="#create-an-aws-k8s-cluster-with-eksctl">Create an AWS K8s cluster with eksctl</a></li>
+        <li><a href="#delete-the-aws-k8s-cluster-with-eksctl">Delete the AWS K8s cluster with eksctl</a></li>
+        <li><a href="#create-an-aws-k8s-with-terraform">Create an AWS K8s with Terraform</a></li>
+        <li><a href="#delete-the-aws-k8s-cluster-with-terraform">Delete the AWS K8s cluster with Terraform</a></li>
+      </ul>
+    </li>
+    <li><a href="#google-cloud">Google Cloud</a>
+      <ul>
+        <li><a href="#prerequisites-for-google-cloud">Prerequisites for Google Cloud</a></li>
+        <li><a href="#initialize-google-cloud-environment">Initialize Google Cloud Environment</a></li>
+        <li><a href="#create-cluster">Create cluster</a></li>
+        <li><a href="#delete-cluster">Delete cluster</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
     </div>
@@ -378,12 +395,22 @@
         
 
 
-<p>K8s in any cloud platform is essentially just K8s, in that that it is still fundamentally Kubernetes &lsquo;under the hood&rsquo;. However there are diffent ways in which to deploy K8s in AWS for example as oposed to Azure, Google cloud and others.</p>
+<p>K8s in any cloud platform is essentially just K8s, in that that it is still fundamentally Kubernetes &lsquo;under the hood&rsquo;. However there are different ways in which to deploy K8s in AWS for example as opposed to Azure, Google cloud and others.</p>
 <p>When exposing services to the internet or rather, network sources outside that of the cluster, there are differences brought about by
 the way the prevailing service integrates with said exposure. Azure, Amazon and Google all have their own &lsquo;Ingress&rsquo; load balancer
-integrations. We are not entirely limited to the the stock provisoin from each providor. For example Nginx offers an alternative Ingress load balancer solution that runs as a service within the cluster as do those provided by the big 3 and others. So we have lots of options however in the simplest form, each providor has an Ingress and integration layer that creates a load balancer outside of the cluster that is specific to each cloud platform.</p>
-<h1 id="aws">AWS</h1>
-<h2 id="prerequisites">Prerequisites</h2>
+integrations. We are not entirely limited to the the stock provision from each provider. For example Nginx offers an alternative Ingress load balancer solution that runs as a service within the cluster as do those provided by the big 3 and others. So we have lots of options however in the simplest form, each provider has an Ingress and integration layer that creates a load balancer outside of the cluster that is specific to each cloud platform.</p>
+<h3 id="prerequisites-for-k8s-and-terraform">Prerequisites for K8s and Terraform</h3>
+<p><strong>kubectl</strong></p>
+<pre><code>curl -LO &quot;https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl&quot;
+chmod +x ./kubectl
+sudo mv kubectl /usr/local/bin
+</code></pre><p><strong>terraform</strong></p>
+<p>This is only required if you want to use terraform (ofcourse)</p>
+<p>download terraform zip file from <a href="https://www.terraform.io/downloads.html">https://www.terraform.io/downloads.html</a></p>
+<pre><code>unzip /mnt/c/Users/jon/Downloads/terraform_0.13.5_linux_amd64.zip
+sudo mv terraform /usr/local/bin/terraform
+</code></pre><h2 id="aws">AWS</h2>
+<h3 id="prerequisites-for-aws">Prerequisites for AWS</h3>
 <p>I&rsquo;ve found that implementing K8s using command line tools such as Terraform using Linux to do so gives me best results but this is my opinion having worked on Linux for &gt; 10 years and being entirely happy with bash which most K8s howtos use. Windows WSL is an adequate Linux environment for this so Windows users are in no way out of options. Mac users are all cool, so they can handle anything. If your using Linux as your core OS there nees nothing more to be said.</p>
 <p><em><strong>aws and eksctl</strong></em></p>
 <p>example of aws cli install :</p>
@@ -404,23 +431,14 @@ sudo mv /tmp/eksctl /usr/local/bin
 chmod +x ./aws-iam-authenticator
 sudo mv aws-iam-authenticator /usr/local/bin
 </code></pre><p>for the latest installation see <a href="https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html">https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html</a></p>
-<p><strong>kubectl</strong></p>
-<pre><code>curl -LO &quot;https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl&quot;
-chmod +x ./kubectl
-sudo mv kubectl /usr/local/bin
-</code></pre><p><strong>terraform</strong></p>
-<p>This is only required if you want to use terraform (ofcourse)</p>
-<p>download terraform zip file from <a href="https://www.terraform.io/downloads.html">https://www.terraform.io/downloads.html</a></p>
-<pre><code>unzip /mnt/c/Users/jon/Downloads/terraform_0.13.5_linux_amd64.zip
-sudo mv terraform /usr/local/bin/terraform
-</code></pre><h2 id="list-clusters-in-aws">List Clusters in AWS</h2>
+<h3 id="list-clusters-in-aws">List Clusters in AWS</h3>
 <p>We need an easy way to know if there are clusters already created in our account. Heres a quick way to get that information :</p>
 <pre><code>aws eks list-clusters
 {
     &quot;clusters&quot;: []
 }
 </code></pre><p>In this example, there are no clusters. This is good as at this point nothing is deployed</p>
-<h2 id="create-an-aws-k8s-cluster-with-eksctl">Create an AWS K8s cluster with eksctl</h2>
+<h3 id="create-an-aws-k8s-cluster-with-eksctl">Create an AWS K8s cluster with eksctl</h3>
 <p>a cluster in AWS can be created with a single command :</p>
 <pre><code>
 eksctl create cluster \
@@ -431,9 +449,9 @@ eksctl create cluster \
   --nodes-max 5 \
   --region eu-west-2
 </code></pre><p>This can take some time to complete. Often over 10 minutes so be prepared to wait.</p>
-<h2 id="delete-the-aws-k8s-cluster-with-eksctl">Delete the AWS K8s cluster with eksctl</h2>
+<h3 id="delete-the-aws-k8s-cluster-with-eksctl">Delete the AWS K8s cluster with eksctl</h3>
 <pre><code>eksctl delete cluster --name myk8s-cluster --region eu-west-2
-</code></pre><h2 id="create-an-aws-k8s-with-terraform">Create an AWS K8s with Terraform</h2>
+</code></pre><h3 id="create-an-aws-k8s-with-terraform">Create an AWS K8s with Terraform</h3>
 <p>with a file called for example <code>main.tf</code></p>
 <pre><code>provider &quot;aws&quot; {
   region = &quot;eu-west-2&quot;
@@ -513,15 +531,26 @@ module &quot;eks&quot; {
 <pre><code>terraform init
 terraform plan
 terraform apply
-</code></pre><p>if successefull, the above will create a credentials file within the same directory which may be used to then authenticate against the K8s
+</code></pre><p>if successful, the above will create a credentials file within the same directory which may be used to then authenticate against the K8s
 cluster :</p>
 <pre><code>export KUBECONFIG=&quot;${PWD}/kubeconfig_my-cluster&quot;
 kubectl get pods --all-namespaces
 </code></pre><p>and this should firstly create the environment variable <code>KUBECONFIG</code>, recognised by <code>kubectl</code> to contain the location of the credentials file and secondly
 list all pods in all namespaces</p>
-<h2 id="delete-the-aws-k8s-cluster-with-terraform">Delete the AWS K8s cluster with Terraform</h2>
+<h3 id="delete-the-aws-k8s-cluster-with-terraform">Delete the AWS K8s cluster with Terraform</h3>
 <p>To delete the K8s cluster created with Terraform, in the same directory as <code>terraform apply</code> command was executed :</p>
 <pre><code>terraform destroy
+</code></pre><h2 id="google-cloud">Google Cloud</h2>
+<h3 id="prerequisites-for-google-cloud">Prerequisites for Google Cloud</h3>
+<p>follow installation instructions to install <code>gcloud</code> command line interface at :</p>
+<p><a href="https://cloud.google.com/sdk/docs/install">https://cloud.google.com/sdk/docs/install</a></p>
+<h3 id="initialize-google-cloud-environment">Initialize Google Cloud Environment</h3>
+<p>From the Google Cloud console, create a project then initialize Google Cloud command line environment to use it with :</p>
+<pre><code>gcloud init
+</code></pre><h3 id="create-cluster">Create cluster</h3>
+<pre><code>gcloud container clusters create kubia --num-nodes 3 --machine-type e2-small
+</code></pre><h3 id="delete-cluster">Delete cluster</h3>
+<pre><code>gcloud container clusters delete kubia
 </code></pre><h1 id="references">References</h1>
 <p><a href="https://learnk8s.io/terraform-eks">https://learnk8s.io/terraform-eks</a></p>
 
@@ -701,19 +730,19 @@ list all pods in all namespaces</p>
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1604678055"></script>
-    <script src="/js/perfect-scrollbar.min.js?1604678055"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1604678055"></script>
-    <script src="/js/jquery.sticky.js?1604678055"></script>
-    <script src="/js/featherlight.min.js?1604678055"></script>
-    <script src="/js/highlight.pack.js?1604678055"></script>
+    <script src="/js/clipboard.min.js?1604701879"></script>
+    <script src="/js/perfect-scrollbar.min.js?1604701879"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1604701879"></script>
+    <script src="/js/jquery.sticky.js?1604701879"></script>
+    <script src="/js/featherlight.min.js?1604701879"></script>
+    <script src="/js/highlight.pack.js?1604701879"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1604678055"></script>
-    <script src="/js/learn.js?1604678055"></script>
-    <script src="/js/hugo-learn.js?1604678055"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1604701879"></script>
+    <script src="/js/learn.js?1604701879"></script>
+    <script src="/js/hugo-learn.js?1604701879"></script>
     
         
-            <script src="/mermaid/mermaid.js?1604678055"></script>
+            <script src="/mermaid/mermaid.js?1604701879"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });
