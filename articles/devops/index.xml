@@ -8,6 +8,16 @@
     <language>en-us</language>
     <lastBuildDate>Fri, 10 Apr 2020 12:54:14 +0100</lastBuildDate><atom:link href="https://doc.notapplicable.info/articles/devops/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Deploying Kubernetes Clusters with a Cloud Provider</title>
+      <link>https://doc.notapplicable.info/articles/devops/deploying_kubernetes_clusters_with_different_cloud_providers/</link>
+      <pubDate>Fri, 06 Nov 2020 14:10:58 +0100</pubDate>
+      
+      <guid>https://doc.notapplicable.info/articles/devops/deploying_kubernetes_clusters_with_different_cloud_providers/</guid>
+      <description>K8s in any cloud platform is essentially just K8s, in that that it is still fundamentally Kubernetes &amp;lsquo;under the hood&amp;rsquo;. However there are diffent ways in which to deploy K8s in AWS for example as oposed to Azure, Google cloud and others.
+When exposing services to the internet or rather, network sources outside that of the cluster, there are differences brought about by the way the prevailing service integrates with said exposure.</description>
+    </item>
+    
+    <item>
       <title>Deploy a Go Web Service as an Azure Web Application Using Docker</title>
       <link>https://doc.notapplicable.info/articles/devops/deploy-a-go-web-service-as-an-azure-web-application-using-docker/</link>
       <pubDate>Fri, 10 Apr 2020 12:54:58 +0100</pubDate>

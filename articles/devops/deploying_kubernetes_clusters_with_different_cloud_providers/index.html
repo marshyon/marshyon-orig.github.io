@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Getting Started with Hugo :: Not Applicable Doc</title>
+    <title>Deploying Kubernetes Clusters with a Cloud Provider :: Not Applicable Doc</title>
 
     
     <link href="/css/nucleus.css?1604677422" rel="stylesheet">
@@ -36,7 +36,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/getting-started/">
+  <body class="" data-url="/articles/devops/deploying_kubernetes_clusters_with_different_cloud_providers/">
     <nav id="sidebar" class="">
 
 
@@ -98,8 +98,8 @@
   
     
     <li data-nav-id="/getting-started/" title="Getting Started with Hugo" class="dd-item
-        parent
-        active
+        
+        
         
         ">
       <a href="/getting-started/">
@@ -174,7 +174,7 @@
   
     
     <li data-nav-id="/articles/" title="Articles" class="dd-item
-        
+        parent
         
         
         ">
@@ -203,7 +203,7 @@
   
     
     <li data-nav-id="/articles/devops/" title="Devops" class="dd-item
-        
+        parent
         
         
         ">
@@ -229,7 +229,7 @@
  
   
     
-      <li data-nav-id="/articles/devops/deploying_kubernetes_clusters_with_different_cloud_providers/" title="Deploying Kubernetes Clusters with a Cloud Provider" class="dd-item ">
+      <li data-nav-id="/articles/devops/deploying_kubernetes_clusters_with_different_cloud_providers/" title="Deploying Kubernetes Clusters with a Cloud Provider" class="dd-item active">
         <a href="/articles/devops/deploying_kubernetes_clusters_with_different_cloud_providers/">
         Deploying Kubernetes Clusters with a Cloud Provider
         
@@ -311,6 +311,8 @@
                         </a>
                     </span>
                   
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
                   <span class="links">
                  
                  
@@ -321,7 +323,19 @@
             
           
           
-            <a href='/'>Home</a> > Getting Started with Hugo
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/'>Home</a> > <a href='/articles/'>Articles</a> > <a href='/articles/devops/'>Devops</a> > Deploying Kubernetes Clusters with a Cloud Provider
+          
+        
+          
+        
           
         
           
@@ -330,6 +344,21 @@
                   </span>
                 </div>
                 
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#prerequisites">Prerequisites</a></li>
+    <li><a href="#list-clusters-in-aws">List Clusters in AWS</a></li>
+    <li><a href="#create-an-aws-k8s-cluster-with-eksctl">Create an AWS K8s cluster with eksctl</a></li>
+    <li><a href="#delete-the-aws-k8s-cluster-with-eksctl">Delete the AWS K8s cluster with eksctl</a></li>
+    <li><a href="#create-an-aws-k8s-with-terraform">Create an AWS K8s with Terraform</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
               </div>
             </div>
             
@@ -337,29 +366,166 @@
         
         </div>
         
-          <div id="chapter">
-        
         <div id="body-inner">
+          
+            <h1>
+              
+              Deploying Kubernetes Clusters with a Cloud Provider
+            </h1>
           
 
         
 
 
+<p>K8s in any cloud platform is essentially just K8s, in that that it is still fundamentally Kubernetes &lsquo;under the hood&rsquo;. However there are diffent ways in which to deploy K8s in AWS for example as oposed to Azure, Google cloud and others.</p>
+<p>When exposing services to the internet or rather, network sources outside that of the cluster, there are differences brought about by
+the way the prevailing service integrates with said exposure. Azure, Amazon and Google all have their own &lsquo;Ingress&rsquo; load balancer
+integrations. We are not entirely limited to the the stock provisoin from each providor. For example Nginx offers an alternative Ingress load balancer solution that runs as a service within the cluster as do those provided by the big 3 and others. So we have lots of options however in the simplest form, each providor has an Ingress and integration layer that creates a load balancer outside of the cluster that is specific to each cloud platform.</p>
+<h1 id="aws">AWS</h1>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>I&rsquo;ve found that Linux give the best result but this is my opinion having worked on Linux for &gt; 10 years and being entirely happy with bash in which most K8s howtos use - Windows WSL is adequate for this so Windows users are in no way out of favour here. Mac users are all cool, so they can handle anything.</p>
+<p><em><strong>aws and eksctl</strong></em></p>
+<p>example of aws cli install :</p>
+<pre><code>curl &quot;https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip&quot; -o &quot;awscliv2.zip&quot;
+unzip awscliv2.zip
+sudo ./aws/install
+</code></pre><p>To allow aws cli to function you need to run <code>aws configiure</code> which will ask for a key, secret which is the minimum required to function.
+A default location and output format ( for example eu-west-2 and json ).</p>
+<p>Get an access key / secret key pair from the AWS console under <code>IAM</code> and search ofr &lsquo;your security credentials&rsquo;.</p>
+<p>example eksctl install :</p>
+<pre><code>curl --silent --location &quot;https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz&quot; | tar xz -C /tmp
+sudo mv /tmp/eksctl /usr/local/bin
+</code></pre><p>for the latest instructions see <a href="https://docs.aws.amazon.com/eks/latest/userguide/getting-started-eksctl.html">https://docs.aws.amazon.com/eks/latest/userguide/getting-started-eksctl.html</a></p>
+<p><em><strong>aws-iam-authenticator</strong></em></p>
+<p>Only needed if you want to use Terraform to build the cluster. Without this Terraform builds will fail. Terraform, I believe specifically the aws plugin that terraform installs needs to have this but I could be mistaken.</p>
+<p>Here is an example install :</p>
+<pre><code>curl -o aws-iam-authenticator https://amazon-eks.s3.us-west-2.amazonaws.com/1.18.8/2020-09-18/bin/linux/amd64/aws-iam-authenticator 
+chmod +x ./aws-iam-authenticator
+sudo mv aws-iam-authenticator /usr/local/bin
+</code></pre><p>for the latest installation see <a href="https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html">https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html</a></p>
+<p><strong>kubectl</strong></p>
+<pre><code>curl -LO &quot;https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl&quot;
+chmod +x ./kubectl
+sudo mv kubectl /usr/local/bin
+</code></pre><p><strong>terraform</strong></p>
+<p>This is only required if you want to use terraform (ofcourse)</p>
+<p>download terraform zip file from <a href="https://www.terraform.io/downloads.html">https://www.terraform.io/downloads.html</a></p>
+<pre><code>unzip /mnt/c/Users/jon/Downloads/terraform_0.13.5_linux_amd64.zip
+sudo mv terraform /usr/local/bin/terraform
+</code></pre><h2 id="list-clusters-in-aws">List Clusters in AWS</h2>
+<p>We need an easy way to know if there are clusters already created in our account. Heres a quick way to get that information :</p>
+<pre><code>aws eks list-clusters
+{
+    &quot;clusters&quot;: []
+}
+</code></pre><p>In this example, there are no clusters. This is good as at this point nothing is deployed</p>
+<h2 id="create-an-aws-k8s-cluster-with-eksctl">Create an AWS K8s cluster with eksctl</h2>
+<p>a cluster in AWS can be created with a single command :</p>
+<pre><code>
+eksctl create cluster \
+  --name myk8s-cluster \
+  --node-type t2.micro \
+  --nodes 3 \
+  --nodes-min 3 \
+  --nodes-max 5 \
+  --region eu-west-2
+</code></pre><p>This can take some time to complete. Often over 10 minutes so be prepared to wait.</p>
+<h2 id="delete-the-aws-k8s-cluster-with-eksctl">Delete the AWS K8s cluster with eksctl</h2>
+<pre><code>eksctl delete cluster --name myk8s-cluster --region eu-west-2
+</code></pre><h2 id="create-an-aws-k8s-with-terraform">Create an AWS K8s with Terraform</h2>
+<p>with a file called for example <code>main.tf</code></p>
+<pre><code>provider &quot;aws&quot; {
+  region = &quot;eu-west-2&quot;
+}
 
-	<h3 id="chapter-1">Chapter 1</h3>
-<h1 id="getting-started-with-hugo-static-site-generator">Getting Started with Hugo Static Site Generator</h1>
-<p>Build a documentation website for your service using Hugo and hugo-theme-learn in less than an hour.</p>
+data &quot;aws_eks_cluster&quot; &quot;cluster&quot; {
+  name = module.eks.cluster_id
+}
+
+data &quot;aws_eks_cluster_auth&quot; &quot;cluster&quot; {
+  name = module.eks.cluster_id
+}
+
+provider &quot;kubernetes&quot; {
+  host                   = data.aws_eks_cluster.cluster.endpoint
+  cluster_ca_certificate = base64decode(data.aws_eks_cluster.cluster.certificate_authority.0.data)
+  token                  = data.aws_eks_cluster_auth.cluster.token
+  load_config_file       = false
+  version                = &quot;~&gt; 1.11&quot;
+}
+
+data &quot;aws_availability_zones&quot; &quot;available&quot; {
+}
+
+locals {
+  cluster_name = &quot;my-cluster&quot;
+}
+
+module &quot;vpc&quot; {
+  source  = &quot;terraform-aws-modules/vpc/aws&quot;
+  version = &quot;2.47.0&quot;
+
+  name                 = &quot;k8s-vpc&quot;
+  cidr                 = &quot;172.16.0.0/16&quot;
+  azs                  = data.aws_availability_zones.available.names
+  private_subnets      = [&quot;172.16.1.0/24&quot;, &quot;172.16.2.0/24&quot;, &quot;172.16.3.0/24&quot;]
+  public_subnets       = [&quot;172.16.4.0/24&quot;, &quot;172.16.5.0/24&quot;, &quot;172.16.6.0/24&quot;]
+  enable_nat_gateway   = true
+  single_nat_gateway   = true
+  enable_dns_hostnames = true
+
+  public_subnet_tags = {
+    &quot;kubernetes.io/cluster/${local.cluster_name}&quot; = &quot;shared&quot;
+    &quot;kubernetes.io/role/elb&quot;                      = &quot;1&quot;
+  }
+
+  private_subnet_tags = {
+    &quot;kubernetes.io/cluster/${local.cluster_name}&quot; = &quot;shared&quot;
+    &quot;kubernetes.io/role/internal-elb&quot;             = &quot;1&quot;
+  }
+}
+
+module &quot;eks&quot; {
+  source  = &quot;terraform-aws-modules/eks/aws&quot;
+  version = &quot;12.2.0&quot;
+
+  cluster_name    = local.cluster_name
+  cluster_version = &quot;1.17&quot;
+  subnets         = module.vpc.private_subnets
+
+  vpc_id = module.vpc.vpc_id
+
+  node_groups = {
+    first = {
+      desired_capacity = 4
+      max_capacity     = 10
+      min_capacity     = 3
+
+      instance_type = &quot;t2.micro&quot;
+    }
+  }
+
+  write_kubeconfig   = true
+  config_output_path = &quot;./&quot;
+}
+</code></pre><p>from within the directory that contains <code>main.tf</code> :</p>
+<pre><code>terraform init
+terraform plan
+terraform apply
+</code></pre><p>if successefull, the above will create a credentials file within the same directory which may be used to then authenticate against the K8s
+cluster :</p>
+<pre><code>export KUBECONFIG=&quot;${PWD}/kubeconfig_my-cluster&quot;
+kubectl get pods --all-namespaces
+</code></pre><p>and this should firstly create the environment variable <code>KUBECONFIG</code>, recognised by <code>kubectl</code> to contain the location of the credentials file and secondly
+list all pods in all namespaces</p>
+<h1 id="references">References</h1>
+<p><a href="https://learnk8s.io/terraform-eks">https://learnk8s.io/terraform-eks</a></p>
 
 
-
-
-
-<footer class=" footline" >
+<footer class="footline">
 	
 </footer>
 
-        
-            </div> 
         
         </div>
         
@@ -391,72 +557,8 @@
             
                 
                     
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
                         
                         
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
                     
                 
                 
@@ -486,6 +588,75 @@
             
             
                 
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
                     
                 
                 
@@ -513,10 +684,10 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="/" title="Home"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/articles/devops/" title="Devops"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/getting-started/installation/" title="Installation" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/articles/devops/deploy-a-go-web-service-as-an-azure-web-application-using-docker/" title="Deploy a Go Web Service as an Azure Web Application Using Docker" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -548,3 +719,4 @@
 
   </body>
 </html>
+
