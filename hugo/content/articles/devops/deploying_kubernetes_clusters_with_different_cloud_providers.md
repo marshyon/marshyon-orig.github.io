@@ -14,7 +14,7 @@ integrations. We are not entirely limited to the the stock provisoin from each p
 
 ## Prerequisites 
 
-I've found that Linux give the best result but this is my opinion having worked on Linux for > 10 years and being entirely happy with bash in which most K8s howtos use - Windows WSL is adequate for this so Windows users are in no way out of favour here. Mac users are all cool, so they can handle anything.
+I've found that implementing K8s using command line tools such as Terraform using Linux to do so gives me best results but this is my opinion having worked on Linux for > 10 years and being entirely happy with bash which most K8s howtos use. Windows WSL is an adequate Linux environment for this so Windows users are in no way out of options. Mac users are all cool, so they can handle anything. If your using Linux as your core OS there nees nothing more to be said.
 
 ___aws and eksctl___
 
