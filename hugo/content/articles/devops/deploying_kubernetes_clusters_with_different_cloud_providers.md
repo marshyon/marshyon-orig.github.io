@@ -238,13 +238,13 @@ From the Google Cloud console, create a project then initialize Google Cloud com
 gcloud init
 ```
 
-### Create cluster
+### Create cluster with gcloud
 
 ```
 gcloud container clusters create kubia --num-nodes 3 --machine-type e2-small
 ```
 
-### Delete cluster
+### Delete cluster with gcloud
 
 ```
 gcloud container clusters delete kubia
