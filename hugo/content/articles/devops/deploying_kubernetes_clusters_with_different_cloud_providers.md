@@ -253,3 +253,5 @@ gcloud container clusters delete kubia
 # References
 
 https://learnk8s.io/terraform-eks
+
+https://www.manning.com/books/kubernetes-in-action
