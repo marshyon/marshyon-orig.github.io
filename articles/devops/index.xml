@@ -13,7 +13,9 @@
       <pubDate>Sat, 07 Nov 2020 14:23:58 +0100</pubDate>
       
       <guid>https://doc.notapplicable.info/articles/devops/exposing_k8s_pods_to_the_outside/</guid>
-      <description>Simple single pod deploy and exposure of service outside of K8s first lets create a running pod using a pre-configured application from docker hub:
+      <description>Simple single pod deploy and exposure of service outside of K8s using a simple test nodejs docker container at :
+https://hub.docker.com/r/marshyon/test-node-container
+lets create a running pod using a pre-configured application from docker hub:
 kubectl run node-test --image=marshyon/test-node-container --port=8080 this can be seen to be running within k8s by getting pods in the default namespace :
 kubectl get pods NAME READY STATUS RESTARTS AGE node-test 1/1 Running 0 9m57s to expose this to the outside world we need to expose it using a load balancer :</description>
     </item>
