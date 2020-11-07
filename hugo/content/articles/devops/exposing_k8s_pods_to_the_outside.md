@@ -6,7 +6,11 @@ draft: false
 
 ### Simple single pod deploy and exposure of service outside of K8s
 
-first lets create a running pod using a pre-configured application from docker hub:
+using a simple test nodejs docker container at :
+
+https://hub.docker.com/r/marshyon/test-node-container
+
+lets create a running pod using a pre-configured application from docker hub:
 
 ```
 kubectl run node-test --image=marshyon/test-node-container --port=8080
