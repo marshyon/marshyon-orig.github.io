@@ -8,6 +8,17 @@
     <language>en-us</language>
     <lastBuildDate>Fri, 10 Apr 2020 12:54:14 +0100</lastBuildDate><atom:link href="https://doc.notapplicable.info/articles/devops/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Exposing Pods in K8s to the outside world</title>
+      <link>https://doc.notapplicable.info/articles/devops/exposing_k8s_pods_to_the_outside/</link>
+      <pubDate>Sat, 07 Nov 2020 14:23:58 +0100</pubDate>
+      
+      <guid>https://doc.notapplicable.info/articles/devops/exposing_k8s_pods_to_the_outside/</guid>
+      <description>Simple single pod deploy and exposure of service outside of K8s first lets create a running pod using a pre-configured application from docker hub:
+kubectl run node-test --image=marshyon/test-node-container --port=8080 this can be seen to be running within k8s by getting pods in the default namespace :
+kubectl get pods NAME READY STATUS RESTARTS AGE node-test 1/1 Running 0 9m57s to expose this to the outside world we need to expose it using a load balancer :</description>
+    </item>
+    
+    <item>
       <title>Deploying Kubernetes Clusters to Cloud Providers</title>
       <link>https://doc.notapplicable.info/articles/devops/deploying_kubernetes_clusters_with_different_cloud_providers/</link>
       <pubDate>Fri, 06 Nov 2020 14:10:58 +0100</pubDate>
