@@ -60,8 +60,6 @@ and terminated with ``` three back-ticks
 
 see https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet for a full list of things that can be done with mark down 
 
-### 
-
 ### Images
 
 Images that you want to display need to be stored as image files in the `hugo/static/image` folder or subdirectories that are created within this and then linked to in your markdown.
