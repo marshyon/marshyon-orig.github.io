@@ -13,11 +13,9 @@
       <pubDate>Mon, 09 Nov 2020 13:00:00 +0100</pubDate>
       
       <guid>https://doc.notapplicable.info/getting-started/cloning_this_repository_and_regenerating_the_site_locally/</guid>
-      <description>Copy / clone the site This site is hosted at https://marshyon.github.io/.
-Clone it to somewhere appropriate on your system with :
-git clone https://github.com/marshyon/marshyon.github.io.git cd marshyon.github.io.git/hugo/themes/hugo-theme-learn git submodule init git submodule update cd ../../ Edit content open the directory and edit the files in
-hugo/content Previewing changes from within the hugo/content directory run hugo serve -b http://localhost:1313 to serve the content locally
-Rebuild the site post to making changes to rebuild the site you first need hugo in your path.</description>
+      <description>Prerequisites to download the site and push it back to the same or other repositories you need Git.
+If you dont already have Git, it can be downloaded from https://git-scm.com/downloads
+to rebuild or preiview the site you need hugo in your path. It is a single executable with no installer, just copy the binary somewhere like (for windows) &amp;lsquo;c:\program files&amp;lt;some directory of your choice&amp;gt; and add it to your system path in System Properties - Environment_variables if it is not already or (for Linux / Mac) /usr/local/bin.</description>
     </item>
     
     <item>
