@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Exposing Pods in K8s to the outside world :: Not Applicable Doc</title>
+    <title>Editing files :: Not Applicable Doc</title>
 
     
     <link href="/css/nucleus.css?1604938156" rel="stylesheet">
@@ -36,7 +36,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/articles/devops/exposing_k8s_pods_to_the_outside/">
+  <body class="" data-url="/getting-started/editting_files/">
     <nav id="sidebar" class="">
 
 
@@ -98,7 +98,7 @@
   
     
     <li data-nav-id="/getting-started/" title="Getting Started with Hugo" class="dd-item
-        
+        parent
         
         
         ">
@@ -166,7 +166,7 @@
  
   
     
-      <li data-nav-id="/getting-started/editting_files/" title="Editing files" class="dd-item ">
+      <li data-nav-id="/getting-started/editting_files/" title="Editing files" class="dd-item active">
         <a href="/getting-started/editting_files/">
         Editing files
         
@@ -216,7 +216,7 @@
   
     
     <li data-nav-id="/articles/" title="Articles" class="dd-item
-        parent
+        
         
         
         ">
@@ -245,7 +245,7 @@
   
     
     <li data-nav-id="/articles/devops/" title="Devops" class="dd-item
-        parent
+        
         
         
         ">
@@ -271,7 +271,7 @@
  
   
     
-      <li data-nav-id="/articles/devops/exposing_k8s_pods_to_the_outside/" title="Exposing Pods in K8s to the outside world" class="dd-item active">
+      <li data-nav-id="/articles/devops/exposing_k8s_pods_to_the_outside/" title="Exposing Pods in K8s to the outside world" class="dd-item ">
         <a href="/articles/devops/exposing_k8s_pods_to_the_outside/">
         Exposing Pods in K8s to the outside world
         
@@ -390,13 +390,7 @@
             
           
           
-            
-            
-          
-          
-            <a href='/'>Home</a> > <a href='/articles/'>Articles</a> > <a href='/articles/devops/'>Devops</a> > Exposing Pods in K8s to the outside world
-          
-        
+            <a href='/'>Home</a> > <a href='/getting-started/'>Getting Started with Hugo</a> > Editing files
           
         
           
@@ -411,11 +405,9 @@
     <div class="wrapper">
 <nav id="TableOfContents">
   <ul>
-    <li>
+    <li><a href="#adding-a-new-article-and-editing-its-contents">Adding a new article and editing its contents</a>
       <ul>
-        <li><a href="#simple-single-pod-deploy-and-exposure-of-service-outside-of-k8s">Simple single pod deploy and exposure of service outside of K8s</a></li>
-        <li><a href="#using-a-deployment-to-create-a-replica-set-and-exposure-outside-of-k8s-with-loadbalancer">Using a deployment to create a replica set and exposure outside of K8s with LoadBalancer</a></li>
-        <li><a href="#editing-and-re-applying-a-deployment">Editing and re-applying a deployment</a></li>
+        <li><a href="#images">Images</a></li>
       </ul>
     </li>
   </ul>
@@ -435,93 +427,19 @@
           
             <h1>
               
-              Exposing Pods in K8s to the outside world
+              Editing files
             </h1>
           
 
         
 
 
-<h3 id="simple-single-pod-deploy-and-exposure-of-service-outside-of-k8s">Simple single pod deploy and exposure of service outside of K8s</h3>
-<p>using a simple test nodejs docker container at :</p>
-<p><a href="https://hub.docker.com/r/marshyon/test-node-container">https://hub.docker.com/r/marshyon/test-node-container</a></p>
-<p>lets create a running pod using a pre-configured application from docker hub:</p>
-<pre><code>kubectl run node-test --image=marshyon/test-node-container --port=8080
-</code></pre><p>this can be seen to be running within k8s by getting pods in the default namespace :</p>
-<pre><code>kubectl get pods
-NAME        READY   STATUS    RESTARTS   AGE
-node-test   1/1     Running   0          9m57s
-</code></pre><p>to expose this to the outside world we need to expose it using a load balancer :</p>
-<pre><code>kubectl expose pod node-test --port=8080 --name=frontend --type=LoadBalancer
-service/frontend exposed
-</code></pre><p>to find out where it is now available we can list the clusters running services :</p>
-<pre><code>kubectl get service
-NAME         TYPE           CLUSTER-IP   EXTERNAL-IP      PORT(S)          AGE
-frontend     LoadBalancer   10.3.241.8   35.189.125.205   8080:31713/TCP   71s
-kubernetes   ClusterIP      10.3.240.1   &lt;none&gt;           443/TCP          25m
-</code></pre><p>and to smoke test the service we can curl to it with :</p>
-<pre><code>curl http://35.189.125.205:8080
-You've hit node-test
-</code></pre><h3 id="using-a-deployment-to-create-a-replica-set-and-exposure-outside-of-k8s-with-loadbalancer">Using a deployment to create a replica set and exposure outside of K8s with LoadBalancer</h3>
-<p>the following <code>deployment.yaml</code> file can be used to create a replica set of &lsquo;node-test-apps&rsquo; that can be edited and redeployed.</p>
-<pre><code>apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: node-test-deployment
-  labels:
-    app: node-test-label
-spec:
-  replicas: 10
-  selector:
-    matchLabels:
-      app: node-test-label
-  template:
-    metadata:
-      labels:
-        app: node-test-label
-    spec:
-      containers:
-      - name: node-test-app
-        image: marshyon/test-node-container
-        ports:
-        - containerPort: 8080
-</code></pre><p>to apply this file :</p>
-<pre><code>kubectl apply -f deployment.yaml
-</code></pre><p>this will create a replica set within a deployment - the identifier &lsquo;label&rsquo; of <code>node-test-label</code> being used to link all of the 10 replicas</p>
-<p><code>kubectl get pods</code> will list 10 running pods</p>
-<p>this deployment can now be exposed using a service of type LoadBalancer :</p>
-<pre><code>kubectl expose -f deployment.yaml --port=8080 --target-port=8080 --type=LoadBalancer
-</code></pre><p>the service is created and can be seen with</p>
-<pre><code>kubectl get service
-NAME                   TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)          AGE
-kubernetes             ClusterIP      10.3.240.1     &lt;none&gt;          443/TCP          2m58s
-node-test-deployment   LoadBalancer   10.3.254.125   34.105.188.22   8080:32055/TCP   39s
-</code></pre><p>and tested with</p>
-<pre><code>curl http://34.105.188.22:8080
-You've hit node-test-deployment-7745697756-thg6k
-</code></pre><h3 id="editing-and-re-applying-a-deployment">Editing and re-applying a deployment</h3>
-<p>the above yaml file can be edited to have less or more replicas and re-applied with</p>
-<pre><code>kubectl apply -f deployment.yaml
-</code></pre><p>and the 10 replicas ( here edited to be 3 ) can be seen as :</p>
-<pre><code>kubectl get pods
-NAME                                    READY   STATUS        RESTARTS   AGE
-node-test-deployment-7745697756-7s8pv   1/1     Terminating   0          3m4s
-node-test-deployment-7745697756-cxglf   1/1     Running       0          3m5s
-node-test-deployment-7745697756-fq6f8   1/1     Terminating   0          3m4s
-node-test-deployment-7745697756-h49mk   1/1     Terminating   0          3m4s
-node-test-deployment-7745697756-p76z6   1/1     Running       0          3m4s
-node-test-deployment-7745697756-pf6ch   1/1     Terminating   0          3m5s
-node-test-deployment-7745697756-ptd7x   1/1     Terminating   0          3m5s
-node-test-deployment-7745697756-rvfl2   1/1     Terminating   0          3m4s
-node-test-deployment-7745697756-thg6k   1/1     Running       0          3m4s
-node-test-deployment-7745697756-vfktd   1/1     Terminating   0          3m4s
-</code></pre><p>after some time :</p>
-<pre><code>kubectl get pods
-NAME                                    READY   STATUS    RESTARTS   AGE
-node-test-deployment-7745697756-cxglf   1/1     Running   0          6m15s
-node-test-deployment-7745697756-p76z6   1/1     Running   0          6m14s
-node-test-deployment-7745697756-thg6k   1/1     Running   0          6m14s
-</code></pre>
+<h2 id="adding-a-new-article-and-editing-its-contents">Adding a new article and editing its contents</h2>
+<h3 id="images">Images</h3>
+<p>the following markdown will show an image stored in static/images :</p>
+<pre><code>![penguins](/images/penguins_scaled.png)
+</code></pre><p><img src="/images/penguins_scaled.png" alt="penguins"></p>
+
 
 <footer class="footline">
 	
@@ -558,8 +476,6 @@ node-test-deployment-7745697756-thg6k   1/1     Running   0          6m14s
             
                 
                     
-                        
-                        
                     
                 
                 
@@ -573,6 +489,9 @@ node-test-deployment-7745697756-thg6k   1/1     Running   0          6m14s
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -606,71 +525,6 @@ node-test-deployment-7745697756-thg6k   1/1     Running   0          6m14s
             
                 
                     
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                    
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
                     
                 
                 
@@ -690,6 +544,69 @@ node-test-deployment-7745697756-thg6k   1/1     Running   0          6m14s
                     
                         
                         
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
                     
                 
                 
@@ -733,10 +650,10 @@ node-test-deployment-7745697756-thg6k   1/1     Running   0          6m14s
 	 
 	 
 		
-			<a class="nav nav-prev" href="/articles/devops/" title="Devops"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/getting-started/installation/" title="Installation"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/articles/devops/deploying_kubernetes_clusters_with_different_cloud_providers/" title="Deploying Kubernetes Clusters to Cloud Providers" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/getting-started/publishing-a-hugo-site-to-github-io/" title="Publishing a Hugo Site to Github Io" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
