@@ -32,6 +32,16 @@ Alternatively, you can download the theme as .</description>
     </item>
     
     <item>
+      <title>Editing files</title>
+      <link>https://doc.notapplicable.info/getting-started/editting_files/</link>
+      <pubDate>Mon, 09 Nov 2020 15:43:00 +0100</pubDate>
+      
+      <guid>https://doc.notapplicable.info/getting-started/editting_files/</guid>
+      <description>Adding a new article and editing its contents Images the following markdown will show an image stored in static/images :
+![penguins](/images/penguins_scaled.png) </description>
+    </item>
+    
+    <item>
       <title>Publishing a Hugo Site to Github Io</title>
       <link>https://doc.notapplicable.info/getting-started/publishing-a-hugo-site-to-github-io/</link>
       <pubDate>Fri, 10 Apr 2020 17:18:18 +0100</pubDate>
