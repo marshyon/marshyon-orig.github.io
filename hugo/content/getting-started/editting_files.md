@@ -11,7 +11,7 @@ If you have a user account already permitted access to push to this particular r
 
 The process of re-rendering the site as new content is submitted is handled in a pipeline.
 
-If you dont have this and want to do this yourself, see [this article](/getting-started/cloning_this_repository_and_regenerating_the_site_locally/) for how that can be simply achieved using `hugo`
+If you do not have this and want to carry this out yourself, see [this article](/getting-started/cloning_this_repository_and_regenerating_the_site_locally/) for how that can be simply achieved using `hugo`
 
 ### Adding a new article and editing its contents
 
