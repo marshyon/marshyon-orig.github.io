@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://doc.notapplicable.info/getting-started/cloning_this_repository_and_regenerating_the_site_locally/</loc>
+    <lastmod>2020-11-09T13:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://doc.notapplicable.info/articles/devops/</loc>
     <lastmod>2020-04-10T12:54:14+01:00</lastmod>
   </url>
