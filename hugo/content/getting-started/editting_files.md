@@ -64,7 +64,7 @@ see https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet for a full 
 
 ### Images
 
-Pictures that you want to display in pictures need to be stored as image files in the `static/image` folder or subdirectories that are created within this.
+Images that you want to display need to be stored as image files in the `hugo/static/image` folder or subdirectories that are created within this and then linked to in your markdown.
 
 the following markdown will show an image stored in static/images :
 
