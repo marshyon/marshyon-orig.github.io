@@ -13,6 +13,10 @@ Clone it to somewhere appropriate on your system with :
 
 ```
 git clone https://github.com/marshyon/marshyon.github.io.git
+cd marshyon.github.io.git/hugo/themes/hugo-theme-learn
+git submodule init
+git submodule update
+cd ../../
 ```
 
 ## Edit content
