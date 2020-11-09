@@ -37,7 +37,8 @@ Alternatively, you can download the theme as .</description>
       <pubDate>Mon, 09 Nov 2020 15:43:00 +0100</pubDate>
       
       <guid>https://doc.notapplicable.info/getting-started/editting_files/</guid>
-      <description>General working If you have a user account already permitted access to push to this particular repository there is very little to do other than to check out this repo and edit and push new content. The process of re-rendering the site as new content is submitted is handled in a pipeline.
+      <description>General working If you have a user account already permitted access to push to this particular repository there is very little to do other than to check out this repo and edit and push new content.
+The process of re-rendering the site as new content is submitted is handled in a pipeline.
 If you dont have this and want to do this yourself, see this article for how that can be simply achieved using hugo</description>
     </item>
     
