@@ -12,21 +12,21 @@
     <title>Editing files :: Not Applicable Doc</title>
 
     
-    <link href="/css/nucleus.css?1604938156" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1604938156" rel="stylesheet">
-    <link href="/css/hybrid.css?1604938156" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1604938156" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1604938156" rel="stylesheet">
-    <link href="/css/auto-complete.css?1604938156" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1604938156" rel="stylesheet">
-    <link href="/css/theme.css?1604938156" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1604938156" rel="stylesheet">
+    <link href="/css/nucleus.css?1604938220" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1604938220" rel="stylesheet">
+    <link href="/css/hybrid.css?1604938220" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1604938220" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1604938220" rel="stylesheet">
+    <link href="/css/auto-complete.css?1604938220" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1604938220" rel="stylesheet">
+    <link href="/css/theme.css?1604938220" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1604938220" rel="stylesheet">
     
-    <link href="/css/theme-green.css?1604938156" rel="stylesheet">
+    <link href="/css/theme-green.css?1604938220" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1604938156"></script>
+    <script src="/js/jquery-3.3.1.min.js?1604938220"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -63,14 +63,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1604938156"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1604938156"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1604938220"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1604938220"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/doc.notapplicable.info";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1604938156"></script>
+<script type="text/javascript" src="/js/search.js?1604938220"></script>
 
     
   </div>
@@ -405,8 +405,11 @@
     <div class="wrapper">
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#adding-a-new-article-and-editing-its-contents">Adding a new article and editing its contents</a>
+    <li>
       <ul>
+        <li><a href="#general-working">General working</a></li>
+        <li><a href="#adding-a-new-article-and-editing-its-contents">Adding a new article and editing its contents</a></li>
+        <li><a href="#heading"></a></li>
         <li><a href="#images">Images</a></li>
       </ul>
     </li>
@@ -434,8 +437,43 @@
         
 
 
-<h2 id="adding-a-new-article-and-editing-its-contents">Adding a new article and editing its contents</h2>
+<h3 id="general-working">General working</h3>
+<p>If you have a user account already permitted access to push to this particular repository there is very little to do other than to check out this repo and edit and push new content. The process of re-rendering the site as new content is submitted is handled in a pipeline.</p>
+<p>If you dont have this and want to do this yourself, see <a href="/getting-started/cloning_this_repository_and_regenerating_the_site_locally/">this article</a> for how that can be simply achieved using <code>hugo</code></p>
+<h3 id="adding-a-new-article-and-editing-its-contents">Adding a new article and editing its contents</h3>
+<p>in the <code>hugo/content</code> directory, there are subdirectories that each have articles within them.</p>
+<p>It can be easiest to copy one of these files to a new filename of the article you want to publish.</p>
+<p>Then simply edit the newly copied file, being careful to edit the &lsquo;metadata&rsquo; at the top of the file, for example this article has metadata as follows :</p>
+<pre><code>---
+title: &quot;Editing files&quot;
+date: 2020-11-09T15:43:00+01:00
+draft: false
+weight: 2
+---
+</code></pre><p>After this meta data at the top of the file, just type any content as normal text and using <code>markdown</code> to highlight headings, bold, italic etc</p>
+<p>for example</p>
+<pre><code># heading level 1
+## heading level 2
+### heading level 3
+</code></pre><p>a code block can be inserted starting with 3 back-ticks : ```</p>
+<pre><code>PS&gt;$PSVersionTable
+
+Name                           Value
+----                           -----
+PSVersion                      7.0.3
+PSEdition                      Core
+GitCommitId                    7.0.3
+OS                             Microsoft Windows 10.0.19042
+Platform                       Win32NT
+PSCompatibleVersions           {1.0, 2.0, 3.0, 4.0…}
+PSRemotingProtocolVersion      2.3
+SerializationVersion           1.1.0.1
+WSManStackVersion              3.0
+</code></pre><p>and terminated with ``` three back-ticks</p>
+<p>see <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet</a> for a full list of things that can be done with mark down</p>
+<h3 id="heading"></h3>
 <h3 id="images">Images</h3>
+<p>Pictures that you want to display in pictures need to be stored as image files in the <code>static/image</code> folder or subdirectories that are created within this.</p>
 <p>the following markdown will show an image stored in static/images :</p>
 <pre><code>![penguins](/images/penguins_scaled.png)
 </code></pre><p><img src="/images/penguins_scaled.png" alt="penguins"></p>
@@ -663,19 +701,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1604938156"></script>
-    <script src="/js/perfect-scrollbar.min.js?1604938156"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1604938156"></script>
-    <script src="/js/jquery.sticky.js?1604938156"></script>
-    <script src="/js/featherlight.min.js?1604938156"></script>
-    <script src="/js/highlight.pack.js?1604938156"></script>
+    <script src="/js/clipboard.min.js?1604938220"></script>
+    <script src="/js/perfect-scrollbar.min.js?1604938220"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1604938220"></script>
+    <script src="/js/jquery.sticky.js?1604938220"></script>
+    <script src="/js/featherlight.min.js?1604938220"></script>
+    <script src="/js/highlight.pack.js?1604938220"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1604938156"></script>
-    <script src="/js/learn.js?1604938156"></script>
-    <script src="/js/hugo-learn.js?1604938156"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1604938220"></script>
+    <script src="/js/learn.js?1604938220"></script>
+    <script src="/js/hugo-learn.js?1604938220"></script>
     
         
-            <script src="/mermaid/mermaid.js?1604938156"></script>
+            <script src="/mermaid/mermaid.js?1604938220"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });
