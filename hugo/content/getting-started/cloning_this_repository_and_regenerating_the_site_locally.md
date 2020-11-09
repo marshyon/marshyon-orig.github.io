@@ -5,6 +5,16 @@ draft: false
 weight: 1
 ---
 
+## Prerequisites
+
+to download the site and push it back to the same or other repositories you need Git. 
+
+If you dont already have Git, it can be downloaded from https://git-scm.com/downloads
+
+to rebuild or preiview the site you need `hugo` in your path. It is a single executable with no installer, just copy the binary somewhere like (for windows) 'c:\program files\<some directory of your choice> and add it to your system path in `System Properties - Environment_variables` if it is not already or (for Linux / Mac) `/usr/local/bin`.
+
+Hugo can be downloaded from [hugo releases](https://github.com/gohugoio/hugo/releases)
+
 ## Copy / clone the site
 
 This site is hosted at [https://marshyon.github.io/](https://marshyon.github.io/).
@@ -32,10 +42,6 @@ hugo/content
 from within the `hugo/content` directory run `hugo serve -b http://localhost:1313` to serve the content locally 
 
 ## Rebuild the site post to making changes
-
-to rebuild the site you first need `hugo` in your path. It is a single executable with no installer, just copy the binary somewhere like (for windows) 'c:\program files\<some directory of your choice> and add it to your system path in `System Properties - Environment_variables` if it is not already or (for Linux / Mac) `/usr/local/bin`.
-
-Hugo can be downloaded from [hugo releases](https://github.com/gohugoio/hugo/releases)
 
 To regenerate the site with new content in `hugo/content` from a command line window and within the `hugo` directory run :
 
