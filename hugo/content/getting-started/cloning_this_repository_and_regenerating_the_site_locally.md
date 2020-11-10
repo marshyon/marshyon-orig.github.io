@@ -39,7 +39,7 @@ hugo/content
 
 ## Previewing changes 
 
-from within the `hugo/content` directory run `hugo serve -b http://localhost:1313` to serve the content locally 
+from within the `hugo` directory run `hugo serve -b http://localhost:1313` to serve the content locally 
 
 ## Rebuild the site post to making changes
 
