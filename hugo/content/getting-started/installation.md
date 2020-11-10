@@ -2,7 +2,7 @@
 title: "Installation"
 date: 2020-04-08T17:45:07+01:00
 draft: false
-weight: 1
+weight: 10
 ---
 
 The following steps are here to help you initialize your new website. If you don't know Hugo at all, we strongly suggest you learn more about it by following this [great documentation for beginners](https://gohugo.io/overview/quickstart/).

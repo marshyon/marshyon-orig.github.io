@@ -9,11 +9,11 @@ weight: 2
 
 If you have a user account already permitted access to push to this particular repository there is very little to do other than to check out this repo and edit and push new content. 
 
-The process of re-rendering the site as new content is submitted is handled in a pipeline.
+The process of re-rendering the site is handled in a pipeline triggered by new content being pushed.
 
-If you do not have this and want to carry this out yourself, see [this article](/getting-started/cloning_this_repository_and_regenerating_the_site_locally/) for how that can be simply achieved using `hugo`
+If you do not have collaborator access and want to carry this out for yourself in your own environment, see [this article](/getting-started/cloning_this_repository_and_regenerating_the_site_locally/) for how that can be simply achieved using `hugo`
 
-### Adding a new article and editing its contents
+### Adding a new articles and editing contents
 
 in the `hugo/content` directory, there are subdirectories that each have articles within them. 
 
@@ -64,12 +64,12 @@ see https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet for a full 
 
 ### Images
 
-Images that you want to display need to be stored as image files in the `hugo/static/image` folder or subdirectories that are created within this and then linked to in your markdown.
+Images that you want to display need to be stored as files in `hugo/static/image` or subdirectories under that directory. Then link to images in your markdown.
 
-the following markdown will show an image stored in static/images :
+For example, the following markdown will display an image stored in static/images called penguins.png :
 
 ```
-![penguins](/images/penguins_scaled.png)
+![penguins](/images/penguins.png)
 ```
 
 ![penguins](/images/penguins_scaled.png)

@@ -2,7 +2,7 @@
 title: "Cloning this site and regenerating locally on your own machine"
 date: 2020-11-09T13:00:00+01:00
 draft: false
-weight: 1
+weight: 5
 ---
 
 ## Prerequisites
