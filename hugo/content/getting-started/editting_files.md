@@ -13,6 +13,24 @@ The process of re-rendering the site is handled in a pipeline triggered by new c
 
 If you do not have collaborator access and want to carry this out for yourself in your own environment, see [this article](/getting-started/cloning_this_repository_and_regenerating_the_site_locally/) for how that can be simply achieved using `hugo`
 
+### check out repo and edit
+
+Initially, the repo needs checked out, there after edit / add / commit / pull / push to see content pushed to the main site :
+
+```
+git clone https://github.com/marshyon/marshyon.github.io.git
+cd marshyon.github.io.git/hugo/themes/hugo-theme-learn
+git submodule init
+git submodule update
+cd ../../
+code . # edit content
+....
+git add .
+git commit -m 'some commit' .
+git pull
+git push
+```
+
 ### Adding a new articles and editing contents
 
 in the `hugo/content` directory, there are subdirectories that each have articles within them. 
