@@ -12,21 +12,21 @@
     <title>Editing files :: Not Applicable Doc</title>
 
     
-    <link href="/css/nucleus.css?1604954718" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1604954718" rel="stylesheet">
-    <link href="/css/hybrid.css?1604954718" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1604954718" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1604954718" rel="stylesheet">
-    <link href="/css/auto-complete.css?1604954718" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1604954718" rel="stylesheet">
-    <link href="/css/theme.css?1604954718" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1604954718" rel="stylesheet">
+    <link href="/css/nucleus.css?1605003786" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1605003786" rel="stylesheet">
+    <link href="/css/hybrid.css?1605003786" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1605003786" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1605003786" rel="stylesheet">
+    <link href="/css/auto-complete.css?1605003786" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1605003786" rel="stylesheet">
+    <link href="/css/theme.css?1605003786" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1605003786" rel="stylesheet">
     
-    <link href="/css/theme-green.css?1604954718" rel="stylesheet">
+    <link href="/css/theme-green.css?1605003786" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1604954718"></script>
+    <script src="/js/jquery-3.3.1.min.js?1605003786"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -63,14 +63,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1604954718"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1604954718"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1605003786"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1605003786"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/doc.notapplicable.info";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1604954718"></script>
+<script type="text/javascript" src="/js/search.js?1605003786"></script>
 
     
   </div>
@@ -97,13 +97,13 @@
  
   
     
-    <li data-nav-id="/getting-started/" title="Getting Started with Hugo" class="dd-item
+    <li data-nav-id="/getting-started/" title="Cloning editing and re-using this site and its templates" class="dd-item
         parent
         
         
         ">
       <a href="/getting-started/">
-          <b>1. </b>Getting Started with Hugo
+          <b>1. </b>Cloning editing and re-using this site and its templates
           
       </a>
       
@@ -114,6 +114,27 @@
           
 
         
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/getting-started/editting_files/" title="Editing files" class="dd-item active">
+        <a href="/getting-started/editting_files/">
+        Editing files
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
           
             
             
@@ -148,27 +169,6 @@
       <li data-nav-id="/getting-started/installation/" title="Installation" class="dd-item ">
         <a href="/getting-started/installation/">
         Installation
-        
-        </a>
-    </li>
-     
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-      <li data-nav-id="/getting-started/editting_files/" title="Editing files" class="dd-item active">
-        <a href="/getting-started/editting_files/">
-        Editing files
         
         </a>
     </li>
@@ -390,7 +390,7 @@
             
           
           
-            <a href='/'>Home</a> > <a href='/getting-started/'>Getting Started with Hugo</a> > Editing files
+            <a href='/'>Home</a> > <a href='/getting-started/'>Cloning editing and re-using this site and its templates</a> > Editing files
           
         
           
@@ -408,7 +408,7 @@
     <li>
       <ul>
         <li><a href="#general-working">General working</a></li>
-        <li><a href="#adding-a-new-article-and-editing-its-contents">Adding a new article and editing its contents</a></li>
+        <li><a href="#adding-a-new-articles-and-editing-contents">Adding a new articles and editing contents</a></li>
         <li><a href="#images">Images</a></li>
       </ul>
     </li>
@@ -438,9 +438,9 @@
 
 <h3 id="general-working">General working</h3>
 <p>If you have a user account already permitted access to push to this particular repository there is very little to do other than to check out this repo and edit and push new content.</p>
-<p>The process of re-rendering the site as new content is submitted is handled in a pipeline.</p>
-<p>If you do not have this and want to carry this out yourself, see <a href="/getting-started/cloning_this_repository_and_regenerating_the_site_locally/">this article</a> for how that can be simply achieved using <code>hugo</code></p>
-<h3 id="adding-a-new-article-and-editing-its-contents">Adding a new article and editing its contents</h3>
+<p>The process of re-rendering the site is handled in a pipeline triggered by new content being pushed.</p>
+<p>If you do not have collaborator access and want to carry this out for yourself in your own environment, see <a href="/getting-started/cloning_this_repository_and_regenerating_the_site_locally/">this article</a> for how that can be simply achieved using <code>hugo</code></p>
+<h3 id="adding-a-new-articles-and-editing-contents">Adding a new articles and editing contents</h3>
 <p>in the <code>hugo/content</code> directory, there are subdirectories that each have articles within them.</p>
 <p>It can be easiest to copy one of these files to a new filename of the article you want to publish.</p>
 <p>Then simply edit the newly copied file, being careful to edit the &lsquo;metadata&rsquo; at the top of the file, for example this article has metadata as follows :</p>
@@ -472,9 +472,9 @@ WSManStackVersion              3.0
 </code></pre><p>and terminated with ``` three back-ticks</p>
 <p>see <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet</a> for a full list of things that can be done with mark down</p>
 <h3 id="images">Images</h3>
-<p>Images that you want to display need to be stored as image files in the <code>hugo/static/image</code> folder or subdirectories that are created within this and then linked to in your markdown.</p>
-<p>the following markdown will show an image stored in static/images :</p>
-<pre><code>![penguins](/images/penguins_scaled.png)
+<p>Images that you want to display need to be stored as files in <code>hugo/static/image</code> or subdirectories under that directory. Then link to images in your markdown.</p>
+<p>For example, the following markdown will display an image stored in static/images called penguins.png :</p>
+<pre><code>![penguins](/images/penguins.png)
 </code></pre><p><img src="/images/penguins_scaled.png" alt="penguins"></p>
 
 
@@ -527,6 +527,23 @@ WSManStackVersion              3.0
             
                 
                     
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
                         
                         
                     
@@ -561,26 +578,6 @@ WSManStackVersion              3.0
             
             
                 
-                    
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                        
-                        
                     
                 
                 
@@ -687,10 +684,10 @@ WSManStackVersion              3.0
 	 
 	 
 		
-			<a class="nav nav-prev" href="/getting-started/installation/" title="Installation"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/getting-started/" title="Cloning editing and re-using this site and its templates"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/getting-started/publishing-a-hugo-site-to-github-io/" title="Publishing a Hugo Site to Github Io" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/getting-started/cloning_this_repository_and_regenerating_the_site_locally/" title="Cloning this site and regenerating locally on your own machine" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -700,19 +697,19 @@ WSManStackVersion              3.0
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1604954718"></script>
-    <script src="/js/perfect-scrollbar.min.js?1604954718"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1604954718"></script>
-    <script src="/js/jquery.sticky.js?1604954718"></script>
-    <script src="/js/featherlight.min.js?1604954718"></script>
-    <script src="/js/highlight.pack.js?1604954718"></script>
+    <script src="/js/clipboard.min.js?1605003786"></script>
+    <script src="/js/perfect-scrollbar.min.js?1605003786"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1605003786"></script>
+    <script src="/js/jquery.sticky.js?1605003786"></script>
+    <script src="/js/featherlight.min.js?1605003786"></script>
+    <script src="/js/highlight.pack.js?1605003786"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1604954718"></script>
-    <script src="/js/learn.js?1604954718"></script>
-    <script src="/js/hugo-learn.js?1604954718"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1605003786"></script>
+    <script src="/js/learn.js?1605003786"></script>
+    <script src="/js/hugo-learn.js?1605003786"></script>
     
         
-            <script src="/mermaid/mermaid.js?1604954718"></script>
+            <script src="/mermaid/mermaid.js?1605003786"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });

@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Getting Started with Hugo on Not Applicable Doc</title>
+    <title>Cloning editing and re-using this site and its templates on Not Applicable Doc</title>
     <link>https://doc.notapplicable.info/getting-started/</link>
-    <description>Recent content in Getting Started with Hugo on Not Applicable Doc</description>
+    <description>Recent content in Cloning editing and re-using this site and its templates on Not Applicable Doc</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 08 Apr 2020 17:38:14 +0100</lastBuildDate><atom:link href="https://doc.notapplicable.info/getting-started/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Editing files</title>
+      <link>https://doc.notapplicable.info/getting-started/editting_files/</link>
+      <pubDate>Mon, 09 Nov 2020 15:43:00 +0100</pubDate>
+      
+      <guid>https://doc.notapplicable.info/getting-started/editting_files/</guid>
+      <description>General working If you have a user account already permitted access to push to this particular repository there is very little to do other than to check out this repo and edit and push new content.
+The process of re-rendering the site is handled in a pipeline triggered by new content being pushed.
+If you do not have collaborator access and want to carry this out for yourself in your own environment, see this article for how that can be simply achieved using hugo</description>
+    </item>
+    
     <item>
       <title>Cloning this site and regenerating locally on your own machine</title>
       <link>https://doc.notapplicable.info/getting-started/cloning_this_repository_and_regenerating_the_site_locally/</link>
@@ -29,17 +40,6 @@ Create your project Hugo provides a new command to create a new website.
 hugo new site &amp;lt;new_project&amp;gt; Install the theme Install the Hugo-theme-learn theme by following this documentation
 This theme&amp;rsquo;s repository is: https://github.com/matcornic/hugo-theme-learn.git
 Alternatively, you can download the theme as .</description>
-    </item>
-    
-    <item>
-      <title>Editing files</title>
-      <link>https://doc.notapplicable.info/getting-started/editting_files/</link>
-      <pubDate>Mon, 09 Nov 2020 15:43:00 +0100</pubDate>
-      
-      <guid>https://doc.notapplicable.info/getting-started/editting_files/</guid>
-      <description>General working If you have a user account already permitted access to push to this particular repository there is very little to do other than to check out this repo and edit and push new content.
-The process of re-rendering the site as new content is submitted is handled in a pipeline.
-If you do not have this and want to carry this out yourself, see this article for how that can be simply achieved using hugo</description>
     </item>
     
     <item>
