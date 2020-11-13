@@ -43,6 +43,11 @@
   </url>
   
   <url>
+    <loc>https://doc.notapplicable.info/articles/devops/exposing_k8s_pods_with_nginx_ingress/</loc>
+    <lastmod>2020-11-13T11:05:58+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://doc.notapplicable.info/articles/devops/exposing_k8s_pods_to_the_outside/</loc>
     <lastmod>2020-11-07T14:23:58+01:00</lastmod>
   </url>
