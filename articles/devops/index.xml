@@ -8,6 +8,18 @@
     <language>en-us</language>
     <lastBuildDate>Fri, 10 Apr 2020 12:54:14 +0100</lastBuildDate><atom:link href="https://doc.notapplicable.info/articles/devops/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Exposing Pods in K8s with Nginx Ingress</title>
+      <link>https://doc.notapplicable.info/articles/devops/exposing_k8s_pods_with_nginx_ingress/</link>
+      <pubDate>Fri, 13 Nov 2020 11:05:58 +0100</pubDate>
+      
+      <guid>https://doc.notapplicable.info/articles/devops/exposing_k8s_pods_with_nginx_ingress/</guid>
+      <description>Prerequisites  A working K8s cluster Kubectl  see this article
+Creating a test back-end service A deployment and service needs to be implemented to create :
+  a pod with an application in this case called marshyon/test-node-listener - see this repo for the code behind this
+  a service of type ClusterIP , the default if not specified and by its nature only available internally within the K8s cluster</description>
+    </item>
+    
+    <item>
       <title>Exposing Pods in K8s to the outside world</title>
       <link>https://doc.notapplicable.info/articles/devops/exposing_k8s_pods_to_the_outside/</link>
       <pubDate>Sat, 07 Nov 2020 14:23:58 +0100</pubDate>

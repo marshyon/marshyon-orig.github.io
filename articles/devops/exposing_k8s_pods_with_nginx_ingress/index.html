@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Devops :: Not Applicable Doc</title>
+    <title>Exposing Pods in K8s with Nginx Ingress :: Not Applicable Doc</title>
 
     
     <link href="/css/nucleus.css?1605270043" rel="stylesheet">
@@ -36,7 +36,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/articles/devops/">
+  <body class="" data-url="/articles/devops/exposing_k8s_pods_with_nginx_ingress/">
     <nav id="sidebar" class="">
 
 
@@ -246,7 +246,7 @@
     
     <li data-nav-id="/articles/devops/" title="Devops" class="dd-item
         parent
-        active
+        
         
         ">
       <a href="/articles/devops/">
@@ -271,7 +271,7 @@
  
   
     
-      <li data-nav-id="/articles/devops/exposing_k8s_pods_with_nginx_ingress/" title="Exposing Pods in K8s with Nginx Ingress" class="dd-item ">
+      <li data-nav-id="/articles/devops/exposing_k8s_pods_with_nginx_ingress/" title="Exposing Pods in K8s with Nginx Ingress" class="dd-item active">
         <a href="/articles/devops/exposing_k8s_pods_with_nginx_ingress/">
         Exposing Pods in K8s with Nginx Ingress
         
@@ -395,6 +395,8 @@
                         </a>
                     </span>
                   
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
                   <span class="links">
                  
                  
@@ -409,7 +411,13 @@
             
           
           
-            <a href='/'>Home</a> > <a href='/articles/'>Articles</a> > Devops
+            
+            
+          
+          
+            <a href='/'>Home</a> > <a href='/articles/'>Articles</a> > <a href='/articles/devops/'>Devops</a> > Exposing Pods in K8s with Nginx Ingress
+          
+        
           
         
           
@@ -420,6 +428,24 @@
                   </span>
                 </div>
                 
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#creating-a-test-back-end-service">Creating a test back-end service</a></li>
+        <li><a href="#setting-up-nginx-ingress-controller">Setting Up Nginx Ingress Controller</a></li>
+        <li><a href="#ingress-configuration">Ingress configuration</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
               </div>
             </div>
             
@@ -427,29 +453,130 @@
         
         </div>
         
-          <div id="chapter">
-        
         <div id="body-inner">
+          
+            <h1>
+              
+              Exposing Pods in K8s with Nginx Ingress
+            </h1>
           
 
         
 
 
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
+<li>A working K8s cluster</li>
+<li>Kubectl</li>
+</ul>
+<p>see <a href="/articles/devops/deploying_kubernetes_clusters_with_different_cloud_providers">this article</a></p>
+<h3 id="creating-a-test-back-end-service">Creating a test back-end service</h3>
+<p>A <code>deployment</code> and <code>service</code> needs to be implemented to create :</p>
+<ul>
+<li>
+<p>a pod with an application in this case called <code>marshyon/test-node-listener</code> - see <a href="https://github.com/marshyon/test-node-listener">this repo</a> for the code behind this</p>
+</li>
+<li>
+<p>a service of type <code>ClusterIP </code>, the default if not specified and by its nature only available internally within the K8s cluster</p>
+</li>
+</ul>
+<blockquote>
+<p>The latter is important to note as if this were to be of type <code>LoadBalancer</code>, the service would be exposed by the underlying cloud fabric and this would be a 1:1 relationship in that for every <code>service</code> of type <code>LoadBalancer</code> there would be a separate load balancer and external IP address created. With large or complicated applications this could quickly become unwieldy. By deploying an ingress controller, a <em><strong>single load balancer</strong></em> is created that can distribute requests to different back end services by host name and or urls.</p>
+</blockquote>
+<p>Here is a manifest file for a deployment and service - <code>post.yaml</code> :</p>
+<pre><code>apiVersion: v1
+kind: Service
+metadata:
+  name: post1
+spec:
+  ports:
+  - port: 80
+    targetPort: 4000
+  selector:
+    app: post1
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: post1
+spec:
+  selector:
+    matchLabels:
+      app: post1
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: post1
+    spec:
+      containers:
+      - name: post1
+        image: marshyon/test-node-listener
+        args:
+        - &quot;-text=post1&quot;
+        ports:
+        - containerPort: 4000
+</code></pre><p>it is applied with :</p>
+<pre><code>kubectl apply -f .\post1.yaml
+</code></pre><p>the deployment can be seen to be running with :</p>
+<pre><code>kubectl.exe get deployments
+NAME    READY   UP-TO-DATE   AVAILABLE   AGE
+post1   2/2     2            2           15m
+</code></pre><p>running pods :</p>
+<pre><code>kubectl get pods
+NAME                     READY   STATUS    RESTARTS   AGE
+post1-68fb864b7d-4clbh   1/1     Running   0          6m42s
+post1-68fb864b7d-msz2x   1/1     Running   0          6m42s
+</code></pre><h3 id="setting-up-nginx-ingress-controller">Setting Up Nginx Ingress Controller</h3>
+<p>Kubernetes has standard deployments for popular Cloud providers, at time of writing this includes Amazon, Azure, Google, Digital Ocean and Scaleway. For specific deployments see <a href="https://kubernetes.github.io/ingress-nginx/deploy">https://kubernetes.github.io/ingress-nginx/deploy</a></p>
+<p>The following is for Digital Ocean :</p>
+<pre><code>kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.41.2/deploy/static/provider/do/deploy.yaml
+</code></pre><p>Taking a look at the <a href="https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.41.2/deploy/static/provider/do/deploy.yaml">url</a> there are a number of manifests each separated by <code>---</code> character breaks and consisting of 10 kinds :</p>
+<pre><code>curl -s https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.41.2/deploy/static/provider/do/deploy.yaml | egrep &quot;^kind: &quot; | cut -f2 -d' ' | grep -v Namespace | sort | uniq
+ClusterRole
+ClusterRoleBinding
+ConfigMap
+Deployment
+Job
+Role
+RoleBinding
+Service
+ServiceAccount
+ValidatingWebhookConfiguration
+</code></pre><p>it is worth reviewing these as there are 17 in total :</p>
+<pre><code>curl -s https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.41.2/deploy/static/provider/do/deploy.yaml | egrep &quot;^kind: &quot; | cut -f2 -d' ' | grep -v Namespace | sort | wc -l
+17
+</code></pre><p>and this can offer insight into how complex services are deployed in K8s and can also serve to inform how such ingress deployments may be crafted to suit applications for different applications and clients.</p>
+<h3 id="ingress-configuration">Ingress configuration</h3>
+<p>To this point all of the infrastructure has been implemented but there is no exposure of the running service to the world outside of K8s.</p>
+<p>The ingress configuration file : <code>ingress.yaml</code></p>
+<pre><code>apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: post-ingress
+spec:
+  rules:
+  - host: post1.notapplicable.info
+    http:
+      paths:
+      - backend:
+          serviceName: post1
+          servicePort: 80  
+</code></pre><p>is applied with :</p>
+<pre><code>kubectl apply -f .\ingress.yaml
+</code></pre><p>its status is obtained from :</p>
+<pre><code>kubectl get ingress
+Warning: extensions/v1beta1 Ingress is deprecated in v1.14+, unavailable in v1.22+; use networking.k8s.io/v1 Ingress
+NAME           CLASS    HOSTS                                                                        ADDRESS           PORTS   AGE
+echo-ingress   &lt;none&gt;   post1.notapplicable.info   206.189.245.136   80      79m
+</code></pre><p>Here the ip address <code>206.189.245.136</code> is created by the underlying <code>Digital Ocean</code> infrastructure.</p>
+<p>A final step, entirely outside of K8s is required to create a <code>DNS A record</code> of <code>post1.notapplicable.info</code> ( replacing post1.notapplicable.info with the domain name that you own ).</p>
 
-	<h3 id="chapter-x">Chapter X</h3>
-<h1 id="devops">DevOps</h1>
-<p>A variety of articles releated to Devops</p>
 
-
-
-
-
-<footer class=" footline" >
+<footer class="footline">
 	
 </footer>
 
-        
-            </div> 
         
         </div>
         
@@ -594,8 +721,6 @@
             
                 
                     
-                        
-                        
                     
                 
                 
@@ -612,6 +737,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -671,10 +799,10 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="/articles/" title="Articles"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/articles/devops/" title="Devops"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/articles/devops/exposing_k8s_pods_with_nginx_ingress/" title="Exposing Pods in K8s with Nginx Ingress" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/articles/devops/exposing_k8s_pods_to_the_outside/" title="Exposing Pods in K8s to the outside world" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -706,3 +834,4 @@
 
   </body>
 </html>
+
