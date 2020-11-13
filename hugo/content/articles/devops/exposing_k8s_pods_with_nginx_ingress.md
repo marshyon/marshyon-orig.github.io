@@ -154,5 +154,5 @@ echo-ingress   <none>   post1.notapplicable.info   206.189.245.136   80      79m
 
 Here the ip address `206.189.245.136` is created by the underlying `Digital Ocean` infrastructure.
 
-A final step, entirely outside of K8s is required to create a `DNS A record` of `post1.notapplicable.info` ( replacing post1.notapplicable.info with the domain name that you own ).
+A final step, entirely outside of K8s is required to create a `DNS A record` of `post1.notapplicable.info` ( replacing post1.notapplicable.info with the domain name that you own ) and resolving to the IP address in your ingress configuration. 
 
