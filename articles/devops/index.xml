@@ -8,6 +8,16 @@
     <language>en-us</language>
     <lastBuildDate>Fri, 10 Apr 2020 12:54:14 +0100</lastBuildDate><atom:link href="https://doc.notapplicable.info/articles/devops/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Deploying containers on single node docker nodes with compose</title>
+      <link>https://doc.notapplicable.info/articles/devops/deploying_containers_on_single_node_docker_with_compose/</link>
+      <pubDate>Fri, 13 Nov 2020 12:32:58 +0100</pubDate>
+      
+      <guid>https://doc.notapplicable.info/articles/devops/deploying_containers_on_single_node_docker_with_compose/</guid>
+      <description>When deploying containers in Docker, possibly for later use in orchestration platforms such as Swarm, K8s, OpenShift it is common to want to test run a docker container firstly on a local service such as a laptop, workstation or stand alone server hosting docker containers.
+It may be desirable to stop at this point and not to go to full cluster load balanced and high availability as is afforded by the likes of K8s as a &amp;lsquo;one off&amp;rsquo; or &amp;lsquo;private&amp;rsquo; implementation of an application does not necessarily need this degree of automation.</description>
+    </item>
+    
+    <item>
       <title>Exposing Pods in K8s with Nginx Ingress</title>
       <link>https://doc.notapplicable.info/articles/devops/exposing_k8s_pods_with_nginx_ingress/</link>
       <pubDate>Fri, 13 Nov 2020 11:05:58 +0100</pubDate>
