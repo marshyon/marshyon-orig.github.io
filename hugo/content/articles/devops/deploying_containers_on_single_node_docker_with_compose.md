@@ -48,7 +48,18 @@ services:
 
 Whilst relatively short in length, the above compose file defines several key features that would each lead to separate command line arguments fed to multiple `docker run` commands.
 
-It is created on a docker server with a single command :
+`services` : defines 1 or more docker container services, something similar to 'services' as a concept in other orchestration platforms.
+
+There are here 2 such services, each with 
+
+* `build` directories - which is the relative path to where each `Dockerfile` is located
+* `ports` list - of 1 or more port mappings, the same as `-p` in `docker run` commands
+* `volumes` list - of 1 or more volumes here mapped to local file storage
+* `restart` flag to tell docker to start failing containers
+
+`environment` used in the 2nd container is a list of 1 or more environment variables that are passed to the starting container - the same as `-e` in `docker run` commands.
+
+This `docker-compose-yaml` file is created on a docker server with a single command :
 
 ```
 docker-compose up -d
