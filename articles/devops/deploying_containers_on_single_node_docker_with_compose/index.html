@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Exposing Pods in K8s to the outside world :: Not Applicable Doc</title>
+    <title>Deploying containers on single node docker nodes with compose :: Not Applicable Doc</title>
 
     
     <link href="/css/nucleus.css?1605272596" rel="stylesheet">
@@ -36,7 +36,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/articles/devops/exposing_k8s_pods_to_the_outside/">
+  <body class="" data-url="/articles/devops/deploying_containers_on_single_node_docker_with_compose/">
     <nav id="sidebar" class="">
 
 
@@ -271,7 +271,7 @@
  
   
     
-      <li data-nav-id="/articles/devops/deploying_containers_on_single_node_docker_with_compose/" title="Deploying containers on single node docker nodes with compose" class="dd-item ">
+      <li data-nav-id="/articles/devops/deploying_containers_on_single_node_docker_with_compose/" title="Deploying containers on single node docker nodes with compose" class="dd-item active">
         <a href="/articles/devops/deploying_containers_on_single_node_docker_with_compose/">
         Deploying containers on single node docker nodes with compose
         
@@ -313,7 +313,7 @@
  
   
     
-      <li data-nav-id="/articles/devops/exposing_k8s_pods_to_the_outside/" title="Exposing Pods in K8s to the outside world" class="dd-item active">
+      <li data-nav-id="/articles/devops/exposing_k8s_pods_to_the_outside/" title="Exposing Pods in K8s to the outside world" class="dd-item ">
         <a href="/articles/devops/exposing_k8s_pods_to_the_outside/">
         Exposing Pods in K8s to the outside world
         
@@ -436,7 +436,7 @@
             
           
           
-            <a href='/'>Home</a> > <a href='/articles/'>Articles</a> > <a href='/articles/devops/'>Devops</a> > Exposing Pods in K8s to the outside world
+            <a href='/'>Home</a> > <a href='/articles/'>Articles</a> > <a href='/articles/devops/'>Devops</a> > Deploying containers on single node docker nodes with compose
           
         
           
@@ -455,9 +455,8 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#simple-single-pod-deploy-and-exposure-of-service-outside-of-k8s">Simple single pod deploy and exposure of service outside of K8s</a></li>
-        <li><a href="#using-a-deployment-to-create-a-replica-set-and-exposure-outside-of-k8s-with-loadbalancer">Using a deployment to create a replica set and exposure outside of K8s with LoadBalancer</a></li>
-        <li><a href="#editing-and-re-applying-a-deployment">Editing and re-applying a deployment</a></li>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#example-use-of-compose">Example use of compose</a></li>
       </ul>
     </li>
   </ul>
@@ -477,93 +476,57 @@
           
             <h1>
               
-              Exposing Pods in K8s to the outside world
+              Deploying containers on single node docker nodes with compose
             </h1>
           
 
         
 
 
-<h3 id="simple-single-pod-deploy-and-exposure-of-service-outside-of-k8s">Simple single pod deploy and exposure of service outside of K8s</h3>
-<p>using a simple test nodejs docker container at :</p>
-<p><a href="https://hub.docker.com/r/marshyon/test-node-container">https://hub.docker.com/r/marshyon/test-node-container</a></p>
-<p>lets create a running pod using a pre-configured application from docker hub:</p>
-<pre><code>kubectl run node-test --image=marshyon/test-node-container --port=8080
-</code></pre><p>this can be seen to be running within k8s by getting pods in the default namespace :</p>
-<pre><code>kubectl get pods
-NAME        READY   STATUS    RESTARTS   AGE
-node-test   1/1     Running   0          9m57s
-</code></pre><p>to expose this to the outside world we need to expose it using a load balancer :</p>
-<pre><code>kubectl expose pod node-test --port=8080 --name=frontend --type=LoadBalancer
-service/frontend exposed
-</code></pre><p>to find out where it is now available we can list the clusters running services :</p>
-<pre><code>kubectl get service
-NAME         TYPE           CLUSTER-IP   EXTERNAL-IP      PORT(S)          AGE
-frontend     LoadBalancer   10.3.241.8   35.189.125.205   8080:31713/TCP   71s
-kubernetes   ClusterIP      10.3.240.1   &lt;none&gt;           443/TCP          25m
-</code></pre><p>and to smoke test the service we can curl to it with :</p>
-<pre><code>curl http://35.189.125.205:8080
-You've hit node-test
-</code></pre><h3 id="using-a-deployment-to-create-a-replica-set-and-exposure-outside-of-k8s-with-loadbalancer">Using a deployment to create a replica set and exposure outside of K8s with LoadBalancer</h3>
-<p>the following <code>deployment.yaml</code> file can be used to create a replica set of &lsquo;node-test-apps&rsquo; that can be edited and redeployed.</p>
-<pre><code>apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: node-test-deployment
-  labels:
-    app: node-test-label
-spec:
-  replicas: 10
-  selector:
-    matchLabels:
-      app: node-test-label
-  template:
-    metadata:
-      labels:
-        app: node-test-label
-    spec:
-      containers:
-      - name: node-test-app
-        image: marshyon/test-node-container
-        ports:
-        - containerPort: 8080
-</code></pre><p>to apply this file :</p>
-<pre><code>kubectl apply -f deployment.yaml
-</code></pre><p>this will create a replica set within a deployment - the identifier &lsquo;label&rsquo; of <code>node-test-label</code> being used to link all of the 10 replicas</p>
-<p><code>kubectl get pods</code> will list 10 running pods</p>
-<p>this deployment can now be exposed using a service of type LoadBalancer :</p>
-<pre><code>kubectl expose -f deployment.yaml --port=8080 --target-port=8080 --type=LoadBalancer
-</code></pre><p>the service is created and can be seen with</p>
-<pre><code>kubectl get service
-NAME                   TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)          AGE
-kubernetes             ClusterIP      10.3.240.1     &lt;none&gt;          443/TCP          2m58s
-node-test-deployment   LoadBalancer   10.3.254.125   34.105.188.22   8080:32055/TCP   39s
-</code></pre><p>and tested with</p>
-<pre><code>curl http://34.105.188.22:8080
-You've hit node-test-deployment-7745697756-thg6k
-</code></pre><h3 id="editing-and-re-applying-a-deployment">Editing and re-applying a deployment</h3>
-<p>the above yaml file can be edited to have less or more replicas and re-applied with</p>
-<pre><code>kubectl apply -f deployment.yaml
-</code></pre><p>and the 10 replicas ( here edited to be 3 ) can be seen as :</p>
-<pre><code>kubectl get pods
-NAME                                    READY   STATUS        RESTARTS   AGE
-node-test-deployment-7745697756-7s8pv   1/1     Terminating   0          3m4s
-node-test-deployment-7745697756-cxglf   1/1     Running       0          3m5s
-node-test-deployment-7745697756-fq6f8   1/1     Terminating   0          3m4s
-node-test-deployment-7745697756-h49mk   1/1     Terminating   0          3m4s
-node-test-deployment-7745697756-p76z6   1/1     Running       0          3m4s
-node-test-deployment-7745697756-pf6ch   1/1     Terminating   0          3m5s
-node-test-deployment-7745697756-ptd7x   1/1     Terminating   0          3m5s
-node-test-deployment-7745697756-rvfl2   1/1     Terminating   0          3m4s
-node-test-deployment-7745697756-thg6k   1/1     Running       0          3m4s
-node-test-deployment-7745697756-vfktd   1/1     Terminating   0          3m4s
-</code></pre><p>after some time :</p>
-<pre><code>kubectl get pods
-NAME                                    READY   STATUS    RESTARTS   AGE
-node-test-deployment-7745697756-cxglf   1/1     Running   0          6m15s
-node-test-deployment-7745697756-p76z6   1/1     Running   0          6m14s
-node-test-deployment-7745697756-thg6k   1/1     Running   0          6m14s
-</code></pre>
+<p>When deploying containers in Docker, possibly for later use in orchestration platforms such as Swarm, K8s, OpenShift it is common to want to test run a docker container firstly on a local service such as a laptop, workstation or stand alone server hosting docker containers.</p>
+<p>It may be desirable to stop at this point and not to go to full cluster load balanced and high availability as is afforded by the likes of K8s as a &lsquo;one off&rsquo; or &lsquo;private&rsquo; implementation of an application does not necessarily need this degree of automation.</p>
+<p><code>docker-compose</code> files serve as a bridge between the one-off and full blown HA implementations and can be used to define single or multiple docker based containers within a package of applications each configured to work as a whole and as a step beyond single <code>Dockerfiles</code>.</p>
+<p>Without this, we could use single Dockerfiles for which &lsquo;docker run&rsquo; commands are marshalled with command lines and scripts. However this can lack consistency and does not lend itself as well to sharing and re-use as can a compose file.</p>
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
+<li>A working Docker server</li>
+<li>docker-compose</li>
+</ul>
+<h3 id="example-use-of-compose">Example use of compose</h3>
+<p>An example of using <code>docker-compse</code> is to be found in this <a href="https://github.com/marshyon/gogs-private-repo">gogs-private-repo</a> application.</p>
+<p>It uses a single <code>docker-compose.yaml</code> file ( see <a href="https://github.com/marshyon/gogs-private-repo/blob/master/docker-compose.yml">here</a> ) to define a working application that consists of 2 Docker containers which are each persisted locally mounted volumes :</p>
+<pre><code>version: &quot;3.8&quot;
+services:
+  repo:
+    build: ./repo
+    ports:
+      - &quot;3333:3333&quot;
+    volumes:
+    - ./repo/data:/app/gogs/data
+    - ./repo/repositories:/app/gogs/repositories
+    - ./repo/custom/conf:/app/gogs/custom/conf   
+    restart: always 
+  webhook:
+    build: ./webhookapp
+    ports:
+      - &quot;4000:4000&quot;  
+    volumes:
+    - ./webhookapp/scripts:/app/scripts
+    environment:
+      - SYSTEM_COMMAND=&quot;/app/scripts/do_something.sh&quot;
+    restart: always 
+</code></pre><p>Whilst relatively short in length, the above compose file defines several key features that would each lead to separate command line arguments fed to multiple <code>docker run</code> commands.</p>
+<p>It is created on a docker server with a single command :</p>
+<pre><code>docker-compose up -d
+</code></pre><p>the <code>-d</code> switch tells the compose binary to run the containers in <code>detached</code> mode and to give back the terminal to the user rather than &lsquo;blocking&rsquo; and waiting for <!-- raw HTML omitted --> to break the session.</p>
+<pre><code>docker-compose stop
+</code></pre><p>will, as it suggests, stop the running containers and</p>
+<pre><code>docker-compose down
+</code></pre><p>will shut down and remove the running containers together with any internal volumes or networks associated with this compose file.</p>
+<blockquote>
+<p>in this example a nice thing to get for free is that a network is automatically created by docker-compose for the current docker-compose.yaml file</p>
+</blockquote>
+
 
 <footer class="footline">
 	
@@ -713,6 +676,23 @@ node-test-deployment-7745697756-thg6k   1/1     Running   0          6m14s
             
                 
                     
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
                         
                         
                     
@@ -747,26 +727,6 @@ node-test-deployment-7745697756-thg6k   1/1     Running   0          6m14s
             
             
                 
-                    
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                        
-                        
                     
                 
                 
@@ -810,10 +770,10 @@ node-test-deployment-7745697756-thg6k   1/1     Running   0          6m14s
 	 
 	 
 		
-			<a class="nav nav-prev" href="/articles/devops/exposing_k8s_pods_with_nginx_ingress/" title="Exposing Pods in K8s with Nginx Ingress"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/articles/devops/" title="Devops"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/articles/devops/deploying_kubernetes_clusters_with_different_cloud_providers/" title="Deploying Kubernetes Clusters to Cloud Providers" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/articles/devops/exposing_k8s_pods_with_nginx_ingress/" title="Exposing Pods in K8s with Nginx Ingress" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
