@@ -1,7 +1,3 @@
-{{ partial "header.html" . }}
-
-{{ .Content }}
-
 <script>
     var remark_config = {
       host: "https://remark42.notapplicable.info", // hostname of remark server, same as REMARK_URL in backend config, e.g. "https://demo.remark42.com"
@@ -21,14 +17,3 @@
       }
     })(remark_config.components || ['embed']);
 </script>
-
-<div id="remark42"></div>
-
-<footer class="footline">
-	{{with .Params.LastModifierDisplayName}}
-	    <i class='fas fa-user'></i> <a href="mailto:{{ $.Params.LastModifierEmail }}">{{ . }}</a> {{with $.Date}} <i class='fas fa-calendar'></i> {{ .Format "02/01/2006" }}{{end}}
-	    </div>
-	{{end}}
-</footer>
-
-{{ partial "footer.html" . }}
