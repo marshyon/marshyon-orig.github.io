@@ -12,21 +12,21 @@
     <title>Deploying containers on single node docker nodes with compose :: Not Applicable Doc</title>
 
     
-    <link href="/css/nucleus.css?1605272596" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1605272596" rel="stylesheet">
-    <link href="/css/hybrid.css?1605272596" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1605272596" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1605272596" rel="stylesheet">
-    <link href="/css/auto-complete.css?1605272596" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1605272596" rel="stylesheet">
-    <link href="/css/theme.css?1605272596" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1605272596" rel="stylesheet">
+    <link href="/css/nucleus.css?1605273211" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1605273211" rel="stylesheet">
+    <link href="/css/hybrid.css?1605273211" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1605273211" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1605273211" rel="stylesheet">
+    <link href="/css/auto-complete.css?1605273211" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1605273211" rel="stylesheet">
+    <link href="/css/theme.css?1605273211" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1605273211" rel="stylesheet">
     
-    <link href="/css/theme-green.css?1605272596" rel="stylesheet">
+    <link href="/css/theme-green.css?1605273211" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1605272596"></script>
+    <script src="/js/jquery-3.3.1.min.js?1605273211"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -63,14 +63,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1605272596"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1605272596"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1605273211"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1605273211"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/doc.notapplicable.info";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1605272596"></script>
+<script type="text/javascript" src="/js/search.js?1605273211"></script>
 
     
   </div>
@@ -516,7 +516,16 @@ services:
       - SYSTEM_COMMAND=&quot;/app/scripts/do_something.sh&quot;
     restart: always 
 </code></pre><p>Whilst relatively short in length, the above compose file defines several key features that would each lead to separate command line arguments fed to multiple <code>docker run</code> commands.</p>
-<p>It is created on a docker server with a single command :</p>
+<p><code>services</code> : defines 1 or more docker container services, something similar to &lsquo;services&rsquo; as a concept in other orchestration platforms.</p>
+<p>There are here 2 such services, each with</p>
+<ul>
+<li><code>build</code> directories - which is the relative path to where each <code>Dockerfile</code> is located</li>
+<li><code>ports</code> list - of 1 or more port mappings, the same as <code>-p</code> in <code>docker run</code> commands</li>
+<li><code>volumes</code> list - of 1 or more volumes here mapped to local file storage</li>
+<li><code>restart</code> flag to tell docker to start failing containers</li>
+</ul>
+<p><code>environment</code> used in the 2nd container is a list of 1 or more environment variables that are passed to the starting container - the same as <code>-e</code> in <code>docker run</code> commands.</p>
+<p>This <code>docker-compose-yaml</code> file is created on a docker server with a single command :</p>
 <pre><code>docker-compose up -d
 </code></pre><p>the <code>-d</code> switch tells the compose binary to run the containers in <code>detached</code> mode and to give back the terminal to the user rather than &lsquo;blocking&rsquo; and waiting for <!-- raw HTML omitted --> to break the session.</p>
 <pre><code>docker-compose stop
@@ -783,19 +792,19 @@ services:
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1605272596"></script>
-    <script src="/js/perfect-scrollbar.min.js?1605272596"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1605272596"></script>
-    <script src="/js/jquery.sticky.js?1605272596"></script>
-    <script src="/js/featherlight.min.js?1605272596"></script>
-    <script src="/js/highlight.pack.js?1605272596"></script>
+    <script src="/js/clipboard.min.js?1605273211"></script>
+    <script src="/js/perfect-scrollbar.min.js?1605273211"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1605273211"></script>
+    <script src="/js/jquery.sticky.js?1605273211"></script>
+    <script src="/js/featherlight.min.js?1605273211"></script>
+    <script src="/js/highlight.pack.js?1605273211"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1605272596"></script>
-    <script src="/js/learn.js?1605272596"></script>
-    <script src="/js/hugo-learn.js?1605272596"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1605273211"></script>
+    <script src="/js/learn.js?1605273211"></script>
+    <script src="/js/hugo-learn.js?1605273211"></script>
     
         
-            <script src="/mermaid/mermaid.js?1605272596"></script>
+            <script src="/mermaid/mermaid.js?1605273211"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });
