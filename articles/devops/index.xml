@@ -8,6 +8,27 @@
     <language>en-us</language>
     <lastBuildDate>Fri, 10 Apr 2020 12:54:14 +0100</lastBuildDate><atom:link href="https://doc.notapplicable.info/articles/devops/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Installing OwnCloud using Compose on a server running docker in a home network</title>
+      <link>https://doc.notapplicable.info/articles/devops/installing-owncloud-using-compose-and-managing-upgrades/</link>
+      <pubDate>Thu, 19 Nov 2020 14:46:58 +0100</pubDate>
+      
+      <guid>https://doc.notapplicable.info/articles/devops/installing-owncloud-using-compose-and-managing-upgrades/</guid>
+      <description>installing OwnCloud create and change directory to a new directory in which to manage this compose application with :
+mkdir ~/owncloud-docker-server cd ~/owncloud-docker-server create a file called .env with the following :
+OWNCLOUD_VERSION=10.5 OWNCLOUD_DOMAIN=&amp;lt;hostname or ip address of your docker server&amp;gt; ADMIN_USERNAME=&amp;lt;admin user&amp;gt; ADMIN_PASSWORD=&amp;lt;admin password&amp;gt; HTTP_PORT=8080 being sure to edit in the ip address or hostname of the server that is running your docker instance on your home network, an admin user and an appropriate password.</description>
+    </item>
+    
+    <item>
+      <title>Docker Setup</title>
+      <link>https://doc.notapplicable.info/articles/devops/docker-settup/</link>
+      <pubDate>Thu, 19 Nov 2020 14:19:58 +0100</pubDate>
+      
+      <guid>https://doc.notapplicable.info/articles/devops/docker-settup/</guid>
+      <description>The following should work for Ubuntu versions 16 18 and 20 and is taken directly from the docker documentation pages ( see References below ) but for completeness this procedure is test run on a new Ubuntu 1804 server installation.
+First, the server is updated to ensure the latest packages are present on the system. Then docker is installed using the docker repositories and finally docker-compose is downloaded and added to the path, ready to use compose files in the normal running of docker and the life-cycle of stand alone containers upon this service.</description>
+    </item>
+    
+    <item>
       <title>Deploying containers on single node docker nodes with compose</title>
       <link>https://doc.notapplicable.info/articles/devops/deploying_containers_on_single_node_docker_with_compose/</link>
       <pubDate>Fri, 13 Nov 2020 12:32:58 +0100</pubDate>
