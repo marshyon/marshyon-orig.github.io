@@ -76,7 +76,7 @@ When exposing services to the internet or rather, network sources outside that o
     <item>
       <title>Deploy a Go Web Service as an Azure Web Application Using Docker</title>
       <link>https://doc.notapplicable.info/articles/devops/deploy-a-go-web-service-as-an-azure-web-application-using-docker/</link>
-      <pubDate>Fri, 10 Apr 2020 12:54:58 +0100</pubDate>
+      <pubDate>Fri, 10 Apr 2020 12:54:00 +0100</pubDate>
       
       <guid>https://doc.notapplicable.info/articles/devops/deploy-a-go-web-service-as-an-azure-web-application-using-docker/</guid>
       <description>Azure Web Applications can only support a limited number of languages and whilst Go was supported for a time it is no longer so as an alternative is to serve a custom Docker image with a Go web application within it, hosted on a public registry such as Docker Hub or a private one within Azure itself. The following focuses on the use of a private registry hosted in Azure.</description>
