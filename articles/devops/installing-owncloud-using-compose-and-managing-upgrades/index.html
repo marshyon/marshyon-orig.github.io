@@ -9,24 +9,24 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Editing files :: Not Applicable Doc</title>
+    <title>Installing OwnCloud using Compose on a server running docker in a home network :: Not Applicable Doc</title>
 
     
-    <link href="/css/nucleus.css?1605799250" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1605799250" rel="stylesheet">
-    <link href="/css/hybrid.css?1605799250" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1605799250" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1605799250" rel="stylesheet">
-    <link href="/css/auto-complete.css?1605799250" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1605799250" rel="stylesheet">
-    <link href="/css/theme.css?1605799250" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1605799250" rel="stylesheet">
+    <link href="/css/nucleus.css?1605799249" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1605799249" rel="stylesheet">
+    <link href="/css/hybrid.css?1605799249" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1605799249" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1605799249" rel="stylesheet">
+    <link href="/css/auto-complete.css?1605799249" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1605799249" rel="stylesheet">
+    <link href="/css/theme.css?1605799249" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1605799249" rel="stylesheet">
     
-    <link href="/css/theme-green.css?1605799250" rel="stylesheet">
+    <link href="/css/theme-green.css?1605799249" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1605799250"></script>
+    <script src="/js/jquery-3.3.1.min.js?1605799249"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -36,7 +36,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/getting-started/editting_files/">
+  <body class="" data-url="/articles/devops/installing-owncloud-using-compose-and-managing-upgrades/">
     <nav id="sidebar" class="">
 
 
@@ -63,14 +63,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1605799250"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1605799250"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1605799249"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1605799249"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/doc.notapplicable.info";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1605799250"></script>
+<script type="text/javascript" src="/js/search.js?1605799249"></script>
 
     
   </div>
@@ -98,7 +98,7 @@
   
     
     <li data-nav-id="/getting-started/" title="Cloning editing and re-using this site and its templates" class="dd-item
-        parent
+        
         
         
         ">
@@ -124,7 +124,7 @@
  
   
     
-      <li data-nav-id="/getting-started/editting_files/" title="Editing files" class="dd-item active">
+      <li data-nav-id="/getting-started/editting_files/" title="Editing files" class="dd-item ">
         <a href="/getting-started/editting_files/">
         Editing files
         
@@ -216,7 +216,7 @@
   
     
     <li data-nav-id="/articles/" title="Articles" class="dd-item
-        
+        parent
         
         
         ">
@@ -245,7 +245,7 @@
   
     
     <li data-nav-id="/articles/devops/" title="Devops" class="dd-item
-        
+        parent
         
         
         ">
@@ -271,7 +271,7 @@
  
   
     
-      <li data-nav-id="/articles/devops/installing-owncloud-using-compose-and-managing-upgrades/" title="Installing OwnCloud using Compose on a server running docker in a home network" class="dd-item ">
+      <li data-nav-id="/articles/devops/installing-owncloud-using-compose-and-managing-upgrades/" title="Installing OwnCloud using Compose on a server running docker in a home network" class="dd-item active">
         <a href="/articles/devops/installing-owncloud-using-compose-and-managing-upgrades/">
         Installing OwnCloud using Compose on a server running docker in a home network
         
@@ -474,7 +474,13 @@
             
           
           
-            <a href='/'>Home</a> > <a href='/getting-started/'>Cloning editing and re-using this site and its templates</a> > Editing files
+            
+            
+          
+          
+            <a href='/'>Home</a> > <a href='/articles/'>Articles</a> > <a href='/articles/devops/'>Devops</a> > Installing OwnCloud using Compose on a server running docker in a home network
+          
+        
           
         
           
@@ -487,18 +493,7 @@
                 
                     <div class="progress">
     <div class="wrapper">
-<nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li><a href="#general-working">General working</a></li>
-        <li><a href="#check-out-repo-and-edit">check out repo and edit</a></li>
-        <li><a href="#adding-a-new-articles-and-editing-contents">Adding a new articles and editing contents</a></li>
-        <li><a href="#images">Images</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
+<nav id="TableOfContents"></nav>
     </div>
 </div>
 
@@ -514,67 +509,108 @@
           
             <h1>
               
-              Editing files
+              Installing OwnCloud using Compose on a server running docker in a home network
             </h1>
           
 
         
 
 
-<h3 id="general-working">General working</h3>
-<p>If you have a user account already permitted access to push to this particular repository there is very little to do other than to check out this repo and edit and push new content.</p>
-<p>The process of re-rendering the site is handled in a pipeline triggered by new content being pushed.</p>
-<p>If you do not have collaborator access and want to carry this out for yourself in your own environment, see <a href="/getting-started/cloning_this_repository_and_regenerating_the_site_locally/">this article</a> for how that can be simply achieved using <code>hugo</code></p>
-<h3 id="check-out-repo-and-edit">check out repo and edit</h3>
-<p>Initially, the repo needs checked out, there after edit / add / commit / pull / push to see content pushed to the main site :</p>
-<pre><code>git clone https://github.com/marshyon/marshyon.github.io.git
-cd marshyon.github.io.git/hugo/themes/hugo-theme-learn
-git submodule init
-git submodule update
-cd ../../
-code . # edit content
-....
-git add .
-git commit -m 'some commit' .
-git pull
-git push
-</code></pre><h3 id="adding-a-new-articles-and-editing-contents">Adding a new articles and editing contents</h3>
-<p>in the <code>hugo/content</code> directory, there are subdirectories that each have articles within them.</p>
-<p>It can be easiest to copy one of these files to a new filename of the article you want to publish.</p>
-<p>Then simply edit the newly copied file, being careful to edit the &lsquo;metadata&rsquo; at the top of the file, for example this article has metadata as follows :</p>
-<pre><code>---
-title: &quot;Editing files&quot;
-date: 2020-11-09T15:43:00+01:00
-draft: false
-weight: 2
----
-</code></pre><p>After this meta data at the top of the file, just type any content as normal text and using <code>markdown</code> to highlight headings, bold, italic etc</p>
-<p>for example</p>
-<pre><code># heading level 1
-## heading level 2
-### heading level 3
-</code></pre><p>a code block can be inserted starting with 3 back-ticks : ```</p>
-<pre><code>PS&gt;$PSVersionTable
+<h1 id="installing-owncloud">installing OwnCloud</h1>
+<p>create and change directory to a new directory in which to manage this compose application with :</p>
+<pre><code>mkdir ~/owncloud-docker-server
+cd ~/owncloud-docker-server
+</code></pre><p>create a file called <code>.env</code> with the following :</p>
+<pre><code>OWNCLOUD_VERSION=10.5
+OWNCLOUD_DOMAIN=&lt;hostname or ip address of your docker server&gt;
+ADMIN_USERNAME=&lt;admin user&gt;
+ADMIN_PASSWORD=&lt;admin password&gt;
+HTTP_PORT=8080
+</code></pre><p>being sure to edit in the ip address or hostname of the server that is running your docker instance on your home network, an admin user and an appropriate password. I like to use a password generator as is found in tools like &lsquo;LastPass&rsquo;, &lsquo;BitWarden&rsquo; and &lsquo;keepass&rsquo; to create random long and strong passwords but that is for you to decide which or what to use for this.</p>
+<p>next create a file called <code>docker-compose.yaml</code> containing the following :</p>
+<pre><code>version: '2.1'
 
-Name                           Value
-----                           -----
-PSVersion                      7.0.3
-PSEdition                      Core
-GitCommitId                    7.0.3
-OS                             Microsoft Windows 10.0.19042
-Platform                       Win32NT
-PSCompatibleVersions           {1.0, 2.0, 3.0, 4.0…}
-PSRemotingProtocolVersion      2.3
-SerializationVersion           1.1.0.1
-WSManStackVersion              3.0
-</code></pre><p>and terminated with ``` three back-ticks</p>
-<p>see <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet</a> for a full list of things that can be done with mark down</p>
-<h3 id="images">Images</h3>
-<p>Images that you want to display need to be stored as files in <code>hugo/static/image</code> or subdirectories under that directory. Then link to images in your markdown.</p>
-<p>For example, the following markdown will display an image stored in static/images called penguins.png :</p>
-<pre><code>![penguins](/images/penguins.png)
-</code></pre><p><img src="/images/penguins_scaled.png" alt="penguins"></p>
+services:
+  owncloud:
+    image: owncloud/server:${OWNCLOUD_VERSION}
+    restart: always
+    ports:
+      - ${HTTP_PORT}:8080
+    depends_on:
+      - db
+      - redis
+    environment:
+      - OWNCLOUD_DOMAIN=${OWNCLOUD_DOMAIN}
+      - OWNCLOUD_DB_TYPE=mysql
+      - OWNCLOUD_DB_NAME=owncloud
+      - OWNCLOUD_DB_USERNAME=owncloud
+      - OWNCLOUD_DB_PASSWORD=owncloud
+      - OWNCLOUD_DB_HOST=db
+      - OWNCLOUD_ADMIN_USERNAME=${ADMIN_USERNAME}
+      - OWNCLOUD_ADMIN_PASSWORD=${ADMIN_PASSWORD}
+      - OWNCLOUD_MYSQL_UTF8MB4=true
+      - OWNCLOUD_REDIS_ENABLED=true
+      - OWNCLOUD_REDIS_HOST=redis
+    healthcheck:
+      test: [&quot;CMD&quot;, &quot;/usr/bin/healthcheck&quot;]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    volumes:
+      - ./files:/mnt/data
 
+  db:
+    image: webhippie/mariadb:latest
+    restart: always
+    environment:
+      - MARIADB_ROOT_PASSWORD=owncloud
+      - MARIADB_USERNAME=owncloud
+      - MARIADB_PASSWORD=owncloud
+      - MARIADB_DATABASE=owncloud
+      - MARIADB_MAX_ALLOWED_PACKET=128M
+      - MARIADB_INNODB_LOG_FILE_SIZE=64M
+    healthcheck:
+      test: [&quot;CMD&quot;, &quot;/usr/bin/healthcheck&quot;]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    volumes:
+      - ./mysql:/var/lib/mysql
+      - ./backup:/var/lib/backup
+
+  redis:
+    image: webhippie/redis:latest
+    restart: always
+    environment:
+      - REDIS_DATABASES=1
+    healthcheck:
+      test: [&quot;CMD&quot;, &quot;/usr/bin/healthcheck&quot;]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    volumes:
+      - ./redis:/var/lib/redis
+</code></pre><p>now finally invoke docker-compose to initially download the docker images used in this application and start each up as running containers with :</p>
+<pre><code>docker-compose up -d
+</code></pre><p>This may take from a few seconds to minutes or more depending on your internet connectivity as each of the 3 images needed will be downloaded from Docker Hub if you do not already have them downloaded in previous installations.</p>
+<p>if something like the ( truncated ) output is seen ( below ) there is a good chance that Owncloud is running :</p>
+<pre><code>...
+5e62f6d7a9e0: Pull complete
+f428e932ff4b: Pull complete
+Digest: sha256:ef46405c1a47ea63f5eaea4adb2e96a8c7bf85ccfd35fd1097df71381f8aeee6
+Status: Downloaded newer image for owncloud/server:10.5
+Creating owncloud-docker-server_db_1    ... done
+Creating owncloud-docker-server_redis_1 ... done
+Creating owncloud-docker-server_owncloud_1 ... done
+</code></pre><p>confirm that the 3 containers are indeed running with <code>docker ps</code> :</p>
+<pre><code>$ docker ps
+CONTAINER ID        IMAGE                      COMMAND                  CREATED              STATUS                        PORTS                    NAMES
+2afb71f575d3        owncloud/server:10.5       &quot;/usr/bin/entrypoint…&quot;   About a minute ago   Up About a minute (healthy)   0.0.0.0:8080-&gt;8080/tcp   owncloud-docker-server_owncloud_1
+14f073af9bff        webhippie/redis:latest     &quot;/usr/bin/entrypoint…&quot;   About a minute ago   Up About a minute (healthy)   6379/tcp                 owncloud-docker-server_redis_1
+7b4fd28ee372        webhippie/mariadb:latest   &quot;/usr/bin/entrypoint…&quot;   About a minute ago   Up About a minute (healthy)   3306/tcp                 owncloud-docker-server_db_1
+</code></pre><p>if all is working, you should be able to access the owncloud web site address now at the hostname or ip address of your docker server on port 80, for example :</p>
+<pre><code>http://192.168.83.110:8080
+</code></pre>
 
 <h2>Comments</h2>
 <div id="remark42"></div>
@@ -614,6 +650,8 @@ WSManStackVersion              3.0
             
                 
                     
+                        
+                        
                     
                 
                 
@@ -627,26 +665,6 @@ WSManStackVersion              3.0
             
             
                 
-                    
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                        
-                        
                     
                 
                 
@@ -691,37 +709,6 @@ WSManStackVersion              3.0
             
         
                     
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
                         
             
             
@@ -738,10 +725,63 @@ WSManStackVersion              3.0
             
         
                     
+            
+        
+                    
                         
             
             
                 
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
                     
                 
                 
@@ -849,10 +889,10 @@ WSManStackVersion              3.0
 	 
 	 
 		
-			<a class="nav nav-prev" href="/getting-started/" title="Cloning editing and re-using this site and its templates"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/articles/devops/" title="Devops"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/getting-started/cloning_this_repository_and_regenerating_the_site_locally/" title="Cloning this site and regenerating locally on your own machine" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/articles/devops/docker-settup/" title="Docker Setup" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>

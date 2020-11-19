@@ -9,24 +9,24 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Editing files :: Not Applicable Doc</title>
+    <title>Docker Setup :: Not Applicable Doc</title>
 
     
-    <link href="/css/nucleus.css?1605799250" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1605799250" rel="stylesheet">
-    <link href="/css/hybrid.css?1605799250" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1605799250" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1605799250" rel="stylesheet">
-    <link href="/css/auto-complete.css?1605799250" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1605799250" rel="stylesheet">
-    <link href="/css/theme.css?1605799250" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1605799250" rel="stylesheet">
+    <link href="/css/nucleus.css?1605799249" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1605799249" rel="stylesheet">
+    <link href="/css/hybrid.css?1605799249" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1605799249" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1605799249" rel="stylesheet">
+    <link href="/css/auto-complete.css?1605799249" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1605799249" rel="stylesheet">
+    <link href="/css/theme.css?1605799249" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1605799249" rel="stylesheet">
     
-    <link href="/css/theme-green.css?1605799250" rel="stylesheet">
+    <link href="/css/theme-green.css?1605799249" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1605799250"></script>
+    <script src="/js/jquery-3.3.1.min.js?1605799249"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -36,7 +36,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/getting-started/editting_files/">
+  <body class="" data-url="/articles/devops/docker-settup/">
     <nav id="sidebar" class="">
 
 
@@ -63,14 +63,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1605799250"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1605799250"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1605799249"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1605799249"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/doc.notapplicable.info";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1605799250"></script>
+<script type="text/javascript" src="/js/search.js?1605799249"></script>
 
     
   </div>
@@ -98,7 +98,7 @@
   
     
     <li data-nav-id="/getting-started/" title="Cloning editing and re-using this site and its templates" class="dd-item
-        parent
+        
         
         
         ">
@@ -124,7 +124,7 @@
  
   
     
-      <li data-nav-id="/getting-started/editting_files/" title="Editing files" class="dd-item active">
+      <li data-nav-id="/getting-started/editting_files/" title="Editing files" class="dd-item ">
         <a href="/getting-started/editting_files/">
         Editing files
         
@@ -216,7 +216,7 @@
   
     
     <li data-nav-id="/articles/" title="Articles" class="dd-item
-        
+        parent
         
         
         ">
@@ -245,7 +245,7 @@
   
     
     <li data-nav-id="/articles/devops/" title="Devops" class="dd-item
-        
+        parent
         
         
         ">
@@ -292,7 +292,7 @@
  
   
     
-      <li data-nav-id="/articles/devops/docker-settup/" title="Docker Setup" class="dd-item ">
+      <li data-nav-id="/articles/devops/docker-settup/" title="Docker Setup" class="dd-item active">
         <a href="/articles/devops/docker-settup/">
         Docker Setup
         
@@ -474,7 +474,13 @@
             
           
           
-            <a href='/'>Home</a> > <a href='/getting-started/'>Cloning editing and re-using this site and its templates</a> > Editing files
+            
+            
+          
+          
+            <a href='/'>Home</a> > <a href='/articles/'>Articles</a> > <a href='/articles/devops/'>Devops</a> > Docker Setup
+          
+        
           
         
           
@@ -487,18 +493,7 @@
                 
                     <div class="progress">
     <div class="wrapper">
-<nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li><a href="#general-working">General working</a></li>
-        <li><a href="#check-out-repo-and-edit">check out repo and edit</a></li>
-        <li><a href="#adding-a-new-articles-and-editing-contents">Adding a new articles and editing contents</a></li>
-        <li><a href="#images">Images</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
+<nav id="TableOfContents"></nav>
     </div>
 </div>
 
@@ -514,66 +509,54 @@
           
             <h1>
               
-              Editing files
+              Docker Setup
             </h1>
           
 
         
 
 
-<h3 id="general-working">General working</h3>
-<p>If you have a user account already permitted access to push to this particular repository there is very little to do other than to check out this repo and edit and push new content.</p>
-<p>The process of re-rendering the site is handled in a pipeline triggered by new content being pushed.</p>
-<p>If you do not have collaborator access and want to carry this out for yourself in your own environment, see <a href="/getting-started/cloning_this_repository_and_regenerating_the_site_locally/">this article</a> for how that can be simply achieved using <code>hugo</code></p>
-<h3 id="check-out-repo-and-edit">check out repo and edit</h3>
-<p>Initially, the repo needs checked out, there after edit / add / commit / pull / push to see content pushed to the main site :</p>
-<pre><code>git clone https://github.com/marshyon/marshyon.github.io.git
-cd marshyon.github.io.git/hugo/themes/hugo-theme-learn
-git submodule init
-git submodule update
-cd ../../
-code . # edit content
-....
-git add .
-git commit -m 'some commit' .
-git pull
-git push
-</code></pre><h3 id="adding-a-new-articles-and-editing-contents">Adding a new articles and editing contents</h3>
-<p>in the <code>hugo/content</code> directory, there are subdirectories that each have articles within them.</p>
-<p>It can be easiest to copy one of these files to a new filename of the article you want to publish.</p>
-<p>Then simply edit the newly copied file, being careful to edit the &lsquo;metadata&rsquo; at the top of the file, for example this article has metadata as follows :</p>
-<pre><code>---
-title: &quot;Editing files&quot;
-date: 2020-11-09T15:43:00+01:00
-draft: false
-weight: 2
----
-</code></pre><p>After this meta data at the top of the file, just type any content as normal text and using <code>markdown</code> to highlight headings, bold, italic etc</p>
-<p>for example</p>
-<pre><code># heading level 1
-## heading level 2
-### heading level 3
-</code></pre><p>a code block can be inserted starting with 3 back-ticks : ```</p>
-<pre><code>PS&gt;$PSVersionTable
+<p>The following should work for Ubuntu versions 16 18 and 20 and is taken directly from the docker documentation pages ( see References below ) but for completeness this procedure is test run on a new Ubuntu 1804 server installation.</p>
+<p>First, the server is updated to ensure the latest packages are present on the system. Then docker is installed using the docker repositories and finally docker-compose is downloaded and added to the path, ready to use compose files in the normal running of docker and the life-cycle of stand alone containers upon this service.</p>
+<p>It is not at this stage intended for clustered multi-node orchestration using things like kubernetes however can be used as a base for these platforms to be deployed to when using docker as a container management system.</p>
+<h1 id="installation-of-docker-on-to-ubuntu-1804">Installation of docker on to Ubuntu 1804</h1>
+<p>Ensure the system is up to date:</p>
+<pre><code>apt update -y
+apt upgrade -y
+</code></pre><p>install the repository</p>
+<pre><code>sudo apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg-agent \
+    software-properties-common
+</code></pre><p>add docker GPG key</p>
+<pre><code>curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+</code></pre><p>add docker repository</p>
+<pre><code>sudo add-apt-repository \
+   &quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable&quot;
 
-Name                           Value
-----                           -----
-PSVersion                      7.0.3
-PSEdition                      Core
-GitCommitId                    7.0.3
-OS                             Microsoft Windows 10.0.19042
-Platform                       Win32NT
-PSCompatibleVersions           {1.0, 2.0, 3.0, 4.0…}
-PSRemotingProtocolVersion      2.3
-SerializationVersion           1.1.0.1
-WSManStackVersion              3.0
-</code></pre><p>and terminated with ``` three back-ticks</p>
-<p>see <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet</a> for a full list of things that can be done with mark down</p>
-<h3 id="images">Images</h3>
-<p>Images that you want to display need to be stored as files in <code>hugo/static/image</code> or subdirectories under that directory. Then link to images in your markdown.</p>
-<p>For example, the following markdown will display an image stored in static/images called penguins.png :</p>
-<pre><code>![penguins](/images/penguins.png)
-</code></pre><p><img src="/images/penguins_scaled.png" alt="penguins"></p>
+</code></pre><p>install docker</p>
+<pre><code>sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io
+</code></pre><p>check if docker is working</p>
+<pre><code>sudo docker run hello-world
+</code></pre><p>if everything is working the following will be displayed in part :</p>
+<pre><code>Hello from Docker!
+This message shows that your installation appears to be working correctly.
+....
+</code></pre><p>add <code>docker-compose</code> to your system with :</p>
+<pre><code>sudo curl -L &quot;https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)&quot; -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+</code></pre><p>to enable your user to run <code>docker</code> commands without having to <code>sudo</code> all of the time add <em><strong>your user name</strong></em> to the docker group with :</p>
+<pre><code>sudo usermod -aG docker &lt;your-user-name&gt;
+</code></pre><p>logout / login again or start a new session to effect the change to your access and run the above <code>docker run hello-world</code> to test</p>
+<p>and we&rsquo;re done</p>
+<h1 id="references">References</h1>
+<p><a href="https://docs.docker.com/engine/install/ubuntu/">https://docs.docker.com/engine/install/ubuntu/</a></p>
+<p><a href="https://docs.docker.com/compose/install/">https://docs.docker.com/compose/install/</a></p>
 
 
 <h2>Comments</h2>
@@ -614,105 +597,8 @@ WSManStackVersion              3.0
             
                 
                     
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
                         
                         
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
                     
                 
                 
@@ -758,6 +644,110 @@ WSManStackVersion              3.0
             
             
                 
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
                     
                 
                 
@@ -849,10 +839,10 @@ WSManStackVersion              3.0
 	 
 	 
 		
-			<a class="nav nav-prev" href="/getting-started/" title="Cloning editing and re-using this site and its templates"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/articles/devops/installing-owncloud-using-compose-and-managing-upgrades/" title="Installing OwnCloud using Compose on a server running docker in a home network"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/getting-started/cloning_this_repository_and_regenerating_the_site_locally/" title="Cloning this site and regenerating locally on your own machine" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/articles/devops/deploying_containers_on_single_node_docker_with_compose/" title="Deploying containers on single node docker nodes with compose" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -862,19 +852,19 @@ WSManStackVersion              3.0
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1605799250"></script>
-    <script src="/js/perfect-scrollbar.min.js?1605799250"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1605799250"></script>
-    <script src="/js/jquery.sticky.js?1605799250"></script>
-    <script src="/js/featherlight.min.js?1605799250"></script>
-    <script src="/js/highlight.pack.js?1605799250"></script>
+    <script src="/js/clipboard.min.js?1605799249"></script>
+    <script src="/js/perfect-scrollbar.min.js?1605799249"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1605799249"></script>
+    <script src="/js/jquery.sticky.js?1605799249"></script>
+    <script src="/js/featherlight.min.js?1605799249"></script>
+    <script src="/js/highlight.pack.js?1605799249"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1605799250"></script>
-    <script src="/js/learn.js?1605799250"></script>
-    <script src="/js/hugo-learn.js?1605799250"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1605799249"></script>
+    <script src="/js/learn.js?1605799249"></script>
+    <script src="/js/hugo-learn.js?1605799249"></script>
     
         
-            <script src="/mermaid/mermaid.js?1605799250"></script>
+            <script src="/mermaid/mermaid.js?1605799249"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });

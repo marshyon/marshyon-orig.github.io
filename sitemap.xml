@@ -43,6 +43,16 @@
   </url>
   
   <url>
+    <loc>https://doc.notapplicable.info/articles/devops/installing-owncloud-using-compose-and-managing-upgrades/</loc>
+    <lastmod>2020-11-19T14:46:58+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://doc.notapplicable.info/articles/devops/docker-settup/</loc>
+    <lastmod>2020-11-19T14:19:58+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://doc.notapplicable.info/articles/devops/deploying_containers_on_single_node_docker_with_compose/</loc>
     <lastmod>2020-11-13T12:32:58+01:00</lastmod>
   </url>
