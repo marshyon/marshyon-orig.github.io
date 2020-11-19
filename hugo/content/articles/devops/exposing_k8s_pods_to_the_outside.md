@@ -1,6 +1,7 @@
 ---
 title: "Exposing Pods in K8s to the outside world"
 date: 2020-11-07T14:23:58+01:00
+authors: ["Jon Brookes"]
 draft: false
 ---
 

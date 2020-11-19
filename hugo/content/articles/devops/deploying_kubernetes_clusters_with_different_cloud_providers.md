@@ -1,6 +1,7 @@
 ---
 title: "Deploying Kubernetes Clusters to Cloud Providers"
 date: 2020-11-06T14:10:58+01:00
+authors: ["Jon Brookes"]
 draft: false
 ---
 

@@ -1,6 +1,7 @@
 ---
 title: "Cloning this site and regenerating locally on your own machine"
 date: 2020-11-09T13:00:00+01:00
+authors: ["Jon Brookes"]
 draft: false
 weight: 5
 ---

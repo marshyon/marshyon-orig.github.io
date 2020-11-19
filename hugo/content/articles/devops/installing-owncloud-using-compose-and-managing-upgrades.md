@@ -1,6 +1,7 @@
 ---
 title: "Installing OwnCloud using Compose on a server running docker in a home network"
 date: 2020-11-19T14:46:58+01:00
+authors: ["Jon Brookes"]
 draft: false
 ---
 

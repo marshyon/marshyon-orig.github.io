@@ -1,6 +1,7 @@
 ---
 title: "Deploying containers on single node docker nodes with compose"
 date: 2020-11-13T12:32:58+01:00
+authors: ["Jon Brookes"]
 draft: false
 ---
 

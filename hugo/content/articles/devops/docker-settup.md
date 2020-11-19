@@ -1,6 +1,7 @@
 ---
 title: "Docker Setup"
 date: 2020-11-19T14:19:58+01:00
+authors: ["Jon Brookes"]
 draft: false
 ---
 

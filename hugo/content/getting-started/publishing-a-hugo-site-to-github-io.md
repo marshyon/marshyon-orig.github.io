@@ -1,6 +1,7 @@
 ---
 title: "Publishing a Hugo Site to Github Io"
 date: 2020-04-10T17:18:18+01:00
+authors: ["Jon Brookes"]
 draft: false
 weight: 20
 ---

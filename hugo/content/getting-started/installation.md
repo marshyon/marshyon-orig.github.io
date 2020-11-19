@@ -1,6 +1,7 @@
 ---
 title: "Installation"
 date: 2020-04-08T17:45:07+01:00
+authors: ["Jon Brookes"]
 draft: false
 weight: 10
 ---

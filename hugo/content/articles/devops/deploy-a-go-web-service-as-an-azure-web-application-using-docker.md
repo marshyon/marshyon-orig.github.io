@@ -1,6 +1,7 @@
 ---
 title: "Deploy a Go Web Service as an Azure Web Application Using Docker"
-date: 2020-04-10T12:54:58+01:00
+date: 2020-04-10T12:54:00+01:00
+authors: ["Jon Brookes"]
 draft: false
 ---
 

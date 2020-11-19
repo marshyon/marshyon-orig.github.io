@@ -1,6 +1,7 @@
 ---
 title: "Editing files"
 date: 2020-11-09T15:43:00+01:00
+authors: ["Jon Brookes"]
 draft: false
 weight: 2
 ---

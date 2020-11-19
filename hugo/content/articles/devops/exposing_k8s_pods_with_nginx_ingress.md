@@ -1,6 +1,7 @@
 ---
 title: "Exposing Pods in K8s with Nginx Ingress"
 date: 2020-11-13T11:05:58+01:00
+authors: ["Jon Brookes"]
 draft: false
 ---
 
