@@ -5,13 +5,14 @@ authors: ["Jon Brookes"]
 draft: false
 ---
 
+# docker on to Ubuntu 1804 
+
 The following should work for Ubuntu versions 16 18 and 20 and is taken directly from the docker documentation pages ( see References below ) but for completeness this procedure is test run on a new Ubuntu 1804 server installation.
 
 First, the server is updated to ensure the latest packages are present on the system. Then docker is installed using the docker repositories and finally docker-compose is downloaded and added to the path, ready to use compose files in the normal running of docker and the life-cycle of stand alone containers upon this service. 
 
 It is not at this stage intended for clustered multi-node orchestration using things like kubernetes however can be used as a base for these platforms to be deployed to when using docker as a container management system. 
 
-# Installation of docker on to Ubuntu 1804 
 
 Ensure the system is up to date:
 
@@ -87,6 +88,18 @@ logout / login again or start a new session to effect the change to your access 
 
 and we're done
 
+# docker on raspberry pi 400
+
+The following installs Docker and Docker Compose onto a Raspberry Pi 400:
+
+```
+sudo apt update
+sudo curl -sSL https://get.docker.com | sh
+sudo usermod -aG docker pi
+sudo apt install -y python3-pip libffi-dev
+sudo pip3 install docker-compose
+```
+
 
 
 # References
@@ -94,3 +107,8 @@ and we're done
 https://docs.docker.com/engine/install/ubuntu/
 
 https://docs.docker.com/compose/install/
+
+https://www.raspberrypi.org/blog/docker-comes-to-raspberry-pi/
+
+https://withblue.ink/2020/06/24/docker-and-docker-compose-on-raspberry-pi-os.html
+
