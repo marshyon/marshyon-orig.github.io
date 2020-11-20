@@ -12,21 +12,21 @@
     <title>Docker Setup :: Not Applicable Doc</title>
 
     
-    <link href="/css/nucleus.css?1605809149" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1605809149" rel="stylesheet">
-    <link href="/css/hybrid.css?1605809149" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1605809149" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1605809149" rel="stylesheet">
-    <link href="/css/auto-complete.css?1605809149" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1605809149" rel="stylesheet">
-    <link href="/css/theme.css?1605809149" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1605809149" rel="stylesheet">
+    <link href="/css/nucleus.css?1605900251" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1605900251" rel="stylesheet">
+    <link href="/css/hybrid.css?1605900251" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1605900251" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1605900251" rel="stylesheet">
+    <link href="/css/auto-complete.css?1605900251" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1605900251" rel="stylesheet">
+    <link href="/css/theme.css?1605900251" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1605900251" rel="stylesheet">
     
-    <link href="/css/theme-green.css?1605809149" rel="stylesheet">
+    <link href="/css/theme-green.css?1605900251" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1605809149"></script>
+    <script src="/js/jquery-3.3.1.min.js?1605900251"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -63,14 +63,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1605809149"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1605809149"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1605900251"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1605900251"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/doc.notapplicable.info";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1605809149"></script>
+<script type="text/javascript" src="/js/search.js?1605900251"></script>
 
     
   </div>
@@ -527,10 +527,10 @@
 
 </div>
 
+<h1 id="docker-on-to-ubuntu-1804">docker on to Ubuntu 1804</h1>
 <p>The following should work for Ubuntu versions 16 18 and 20 and is taken directly from the docker documentation pages ( see References below ) but for completeness this procedure is test run on a new Ubuntu 1804 server installation.</p>
 <p>First, the server is updated to ensure the latest packages are present on the system. Then docker is installed using the docker repositories and finally docker-compose is downloaded and added to the path, ready to use compose files in the normal running of docker and the life-cycle of stand alone containers upon this service.</p>
 <p>It is not at this stage intended for clustered multi-node orchestration using things like kubernetes however can be used as a base for these platforms to be deployed to when using docker as a container management system.</p>
-<h1 id="installation-of-docker-on-to-ubuntu-1804">Installation of docker on to Ubuntu 1804</h1>
 <p>Ensure the system is up to date:</p>
 <pre><code>apt update -y
 apt upgrade -y
@@ -565,9 +565,18 @@ sudo chmod +x /usr/local/bin/docker-compose
 <pre><code>sudo usermod -aG docker &lt;your-user-name&gt;
 </code></pre><p>logout / login again or start a new session to effect the change to your access and run the above <code>docker run hello-world</code> to test</p>
 <p>and we&rsquo;re done</p>
-<h1 id="references">References</h1>
+<h1 id="docker-on-raspberry-pi-400">docker on raspberry pi 400</h1>
+<p>The following installs Docker and Docker Compose onto a Raspberry Pi 400:</p>
+<pre><code>sudo apt update
+sudo curl -sSL https://get.docker.com | sh
+sudo usermod -aG docker pi
+sudo apt install -y python3-pip libffi-dev
+sudo pip3 install docker-compose
+</code></pre><h1 id="references">References</h1>
 <p><a href="https://docs.docker.com/engine/install/ubuntu/">https://docs.docker.com/engine/install/ubuntu/</a></p>
 <p><a href="https://docs.docker.com/compose/install/">https://docs.docker.com/compose/install/</a></p>
+<p><a href="https://www.raspberrypi.org/blog/docker-comes-to-raspberry-pi/">https://www.raspberrypi.org/blog/docker-comes-to-raspberry-pi/</a></p>
+<p><a href="https://withblue.ink/2020/06/24/docker-and-docker-compose-on-raspberry-pi-os.html">https://withblue.ink/2020/06/24/docker-and-docker-compose-on-raspberry-pi-os.html</a></p>
 
 
 <h2>Comments</h2>
@@ -863,19 +872,19 @@ sudo chmod +x /usr/local/bin/docker-compose
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1605809149"></script>
-    <script src="/js/perfect-scrollbar.min.js?1605809149"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1605809149"></script>
-    <script src="/js/jquery.sticky.js?1605809149"></script>
-    <script src="/js/featherlight.min.js?1605809149"></script>
-    <script src="/js/highlight.pack.js?1605809149"></script>
+    <script src="/js/clipboard.min.js?1605900251"></script>
+    <script src="/js/perfect-scrollbar.min.js?1605900251"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1605900251"></script>
+    <script src="/js/jquery.sticky.js?1605900251"></script>
+    <script src="/js/featherlight.min.js?1605900251"></script>
+    <script src="/js/highlight.pack.js?1605900251"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1605809149"></script>
-    <script src="/js/learn.js?1605809149"></script>
-    <script src="/js/hugo-learn.js?1605809149"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1605900251"></script>
+    <script src="/js/learn.js?1605900251"></script>
+    <script src="/js/hugo-learn.js?1605900251"></script>
     
         
-            <script src="/mermaid/mermaid.js?1605809149"></script>
+            <script src="/mermaid/mermaid.js?1605900251"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });

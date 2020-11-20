@@ -24,7 +24,7 @@ OWNCLOUD_VERSION=10.5 OWNCLOUD_DOMAIN=&amp;lt;hostname or ip address of your doc
       <pubDate>Thu, 19 Nov 2020 14:19:58 +0100</pubDate>
       
       <guid>https://doc.notapplicable.info/articles/devops/docker-settup/</guid>
-      <description>The following should work for Ubuntu versions 16 18 and 20 and is taken directly from the docker documentation pages ( see References below ) but for completeness this procedure is test run on a new Ubuntu 1804 server installation.
+      <description>docker on to Ubuntu 1804 The following should work for Ubuntu versions 16 18 and 20 and is taken directly from the docker documentation pages ( see References below ) but for completeness this procedure is test run on a new Ubuntu 1804 server installation.
 First, the server is updated to ensure the latest packages are present on the system. Then docker is installed using the docker repositories and finally docker-compose is downloaded and added to the path, ready to use compose files in the normal running of docker and the life-cycle of stand alone containers upon this service.</description>
     </item>
     
