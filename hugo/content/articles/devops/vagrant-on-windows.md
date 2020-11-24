@@ -142,7 +142,7 @@ usermod -aG docker vagrant
 
 which is invoked by vagrant once the machine has been initially stood up - see the line `config.vm.provision "shell", path: "script.sh"` for the point at which this is run. The script goes on to update the newly created VM to have the latest updates available at the time and to install docker from the docker repositories.
 
-Additionally, an 'SMB share' ( windows share ) is 'mounted' by the newly running VM - see the line `config.vm.synced_folder "." ...` where this is enabled.
+Additionally, an 'SMB share' ( windows share ) is 'mounted' by the newly running VM - see the line `config.vm.synced_folder "." ...` where this is enabled. What this means is that files that are added / removed / edited within the ( linux shell ) under `/vagrant` are also available in the current vagrant directory that holds the Vagrantfile and vice versa, permitting the easy transference of files and data between the 2 running platforms.
 
 On the system that this ran from, there is a default network set on the line `docker01.vm.network "public_network", bridge: "Default Switch"` which may need to be altered to suit other environments.
 
