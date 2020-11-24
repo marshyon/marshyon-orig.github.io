@@ -12,21 +12,21 @@
     <title>Vagrant on Windows :: Not Applicable Doc</title>
 
     
-    <link href="/css/nucleus.css?1606226870" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1606226870" rel="stylesheet">
-    <link href="/css/hybrid.css?1606226870" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1606226870" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1606226870" rel="stylesheet">
-    <link href="/css/auto-complete.css?1606226870" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1606226870" rel="stylesheet">
-    <link href="/css/theme.css?1606226870" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1606226870" rel="stylesheet">
+    <link href="/css/nucleus.css?1606227333" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1606227333" rel="stylesheet">
+    <link href="/css/hybrid.css?1606227333" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1606227333" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1606227333" rel="stylesheet">
+    <link href="/css/auto-complete.css?1606227333" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1606227333" rel="stylesheet">
+    <link href="/css/theme.css?1606227333" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1606227333" rel="stylesheet">
     
-    <link href="/css/theme-green.css?1606226870" rel="stylesheet">
+    <link href="/css/theme-green.css?1606227333" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1606226870"></script>
+    <script src="/js/jquery-3.3.1.min.js?1606227333"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -63,14 +63,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1606226870"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1606226870"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1606227333"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1606227333"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/doc.notapplicable.info";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1606226870"></script>
+<script type="text/javascript" src="/js/search.js?1606227333"></script>
 
     
   </div>
@@ -659,7 +659,7 @@ sudo apt-get update -y
 sudo apt-get install -y docker-ce docker-ce-cli containerd.io   
 usermod -aG docker vagrant
 </code></pre><p>which is invoked by vagrant once the machine has been initially stood up - see the line <code>config.vm.provision &quot;shell&quot;, path: &quot;script.sh&quot;</code> for the point at which this is run. The script goes on to update the newly created VM to have the latest updates available at the time and to install docker from the docker repositories.</p>
-<p>Additionally, an &lsquo;SMB share&rsquo; ( windows share ) is &lsquo;mounted&rsquo; by the newly running VM - see the line <code>config.vm.synced_folder &quot;.&quot; ...</code> where this is enabled.</p>
+<p>Additionally, an &lsquo;SMB share&rsquo; ( windows share ) is &lsquo;mounted&rsquo; by the newly running VM - see the line <code>config.vm.synced_folder &quot;.&quot; ...</code> where this is enabled. What this means is that files that are added / removed / edited within the ( linux shell ) under <code>/vagrant</code> are also available in the current vagrant directory that holds the Vagrantfile and vice versa, permitting the easy transference of files and data between the 2 running platforms.</p>
 <p>On the system that this ran from, there is a default network set on the line <code>docker01.vm.network &quot;public_network&quot;, bridge: &quot;Default Switch&quot;</code> which may need to be altered to suit other environments.</p>
 <p>In the powershell session that we are running this from and to get the environment variables to be present and ready for this image to be build, first run something like :</p>
 <pre><code>$Env:SMBUserName = &quot;&lt;your user&gt;@localhost&quot;
@@ -996,19 +996,19 @@ $Env:SMBUserPassword = &quot;&lt;your password&gt;&quot;
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1606226870"></script>
-    <script src="/js/perfect-scrollbar.min.js?1606226870"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1606226870"></script>
-    <script src="/js/jquery.sticky.js?1606226870"></script>
-    <script src="/js/featherlight.min.js?1606226870"></script>
-    <script src="/js/highlight.pack.js?1606226870"></script>
+    <script src="/js/clipboard.min.js?1606227333"></script>
+    <script src="/js/perfect-scrollbar.min.js?1606227333"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1606227333"></script>
+    <script src="/js/jquery.sticky.js?1606227333"></script>
+    <script src="/js/featherlight.min.js?1606227333"></script>
+    <script src="/js/highlight.pack.js?1606227333"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1606226870"></script>
-    <script src="/js/learn.js?1606226870"></script>
-    <script src="/js/hugo-learn.js?1606226870"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1606227333"></script>
+    <script src="/js/learn.js?1606227333"></script>
+    <script src="/js/hugo-learn.js?1606227333"></script>
     
         
-            <script src="/mermaid/mermaid.js?1606226870"></script>
+            <script src="/mermaid/mermaid.js?1606227333"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });
