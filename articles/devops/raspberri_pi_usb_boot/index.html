@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Tags :: Not Applicable Doc</title>
+    <title> :: Not Applicable Doc</title>
 
     
     <link href="/css/nucleus.css?1606226870" rel="stylesheet">
@@ -36,7 +36,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/tags/">
+  <body class="" data-url="/articles/devops/raspberri_pi_usb_boot/">
     <nav id="sidebar" class="">
 
 
@@ -216,7 +216,7 @@
   
     
     <li data-nav-id="/articles/" title="Articles" class="dd-item
-        
+        parent
         
         
         ">
@@ -245,7 +245,7 @@
   
     
     <li data-nav-id="/articles/devops/" title="Devops" class="dd-item
-        
+        parent
         
         
         ">
@@ -439,7 +439,7 @@
  
   
     
-      <li data-nav-id="/articles/devops/raspberri_pi_usb_boot/" title="" class="dd-item ">
+      <li data-nav-id="/articles/devops/raspberri_pi_usb_boot/" title="" class="dd-item active">
         <a href="/articles/devops/raspberri_pi_usb_boot/">
         
         
@@ -512,7 +512,19 @@
             
           
           
-            <a href='/'>Home</a> > Tags
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/'>Home</a> > <a href='/articles/'>Articles</a> > <a href='/articles/devops/'>Devops</a> > 
+          
+        
+          
+        
           
         
           
@@ -523,7 +535,17 @@
                 
                     <div class="progress">
     <div class="wrapper">
-
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#32gig-ssd">32Gig SSD:</a></li>
+        <li><a href="#1tb-samsung-spinning-rust">1TB Samsung spinning rust</a></li>
+        <li><a href="#240-gb-ssd">240 GB SSD</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
     </div>
 </div>
 
@@ -539,24 +561,81 @@
           
             <h1>
               
-                tag ::
               
-              Tags
             </h1>
           
 
         
 
 
-
-
-
-<ul>
+<div style="text-align: center;">
+<span>
 	
-</ul>
+</span>
+- 0001-01-01 00:00 
 
 
-<footer class=" footline" >
+</div>
+
+<h3 id="32gig-ssd">32Gig SSD:</h3>
+<pre><code>pi@raspberrypi:~ $ mkdir tmp
+pi@raspberrypi:~ $ cd tmp
+pi@raspberrypi:~/tmp $ ls
+pi@raspberrypi:~/tmp $ sync; dd if=/dev/zero of=tempfile bs=1M count=1024; sync
+1024+0 records in
+1024+0 records out
+1073741824 bytes (1.1 GB, 1.0 GiB) copied, 33.5763 s, 32.0 MB/s
+pi@raspberrypi:~/tmp $ dd if=tempfile of=/dev/null bs=1M count=1024
+1024+0 records in
+1024+0 records out
+1073741824 bytes (1.1 GB, 1.0 GiB) copied, 2.54035 s, 423 MB/s
+pi@raspberrypi:~/tmp $ sudo /sbin/sysctl -w vm.drop_caches=3
+vm.drop_caches = 3
+pi@raspberrypi:~/tmp $ dd if=tempfile of=/dev/null bs=1M count=1024
+1024+0 records in
+1024+0 records out
+1073741824 bytes (1.1 GB, 1.0 GiB) copied, 23.561 s, 45.6 MB/s
+</code></pre><h3 id="1tb-samsung-spinning-rust">1TB Samsung spinning rust</h3>
+<pre><code>pi@raspberrypi:~ $ mkdir tmp
+pi@raspberrypi:~ $ cd tmp
+pi@raspberrypi:~/tmp $ ls
+pi@raspberrypi:~/tmp $ sync; dd if=/dev/zero of=tempfile bs=1M count=1024; sync
+1024+0 records in
+1024+0 records out
+1073741824 bytes (1.1 GB, 1.0 GiB) copied, 9.64114 s, 111 MB/s
+pi@raspberrypi:~/tmp $ dd if=tempfile of=/dev/null bs=1M count=1024
+1024+0 records in
+1024+0 records out
+1073741824 bytes (1.1 GB, 1.0 GiB) copied, 1.91001 s, 562 MB/s
+pi@raspberrypi:~/tmp $ sudo /sbin/sysctl -w vm.drop_caches=3
+vm.drop_caches = 3
+pi@raspberrypi:~/tmp $ dd if=tempfile of=/dev/null bs=1M count=1024
+1024+0 records in
+1024+0 records out
+1073741824 bytes (1.1 GB, 1.0 GiB) copied, 9.07368 s, 118 MB/s
+</code></pre><h3 id="240-gb-ssd">240 GB SSD</h3>
+<pre><code>pi@raspberrypi:~ $ mkdir tmp
+pi@raspberrypi:~ $ cd tmp/
+pi@raspberrypi:~/tmp $ sync; dd if=/dev/zero of=tempfile bs=1M count=1024; sync
+1024+0 records in
+1024+0 records out
+1073741824 bytes (1.1 GB, 1.0 GiB) copied, 4.87453 s, 220 MB/s
+pi@raspberrypi:~/tmp $ dd if=tempfile of=/dev/null bs=1M count=1024
+1024+0 records in
+1024+0 records out
+1073741824 bytes (1.1 GB, 1.0 GiB) copied, 1.8912 s, 568 MB/s
+pi@raspberrypi:~/tmp $ sudo /sbin/sysctl -w vm.drop_caches=3
+vm.drop_caches = 3
+pi@raspberrypi:~/tmp $ dd if=tempfile of=/dev/null bs=1M count=1024
+1024+0 records in
+1024+0 records out
+1073741824 bytes (1.1 GB, 1.0 GiB) copied, 3.18565 s, 337 MB/s
+</code></pre>
+
+<h2>Comments</h2>
+<div id="remark42"></div>
+
+<footer class="footline">
 	
 </footer>
 
@@ -674,6 +753,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -689,6 +769,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -701,6 +782,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -829,6 +913,7 @@
             
             
                 
+                    
                     
                 
                 
@@ -856,8 +941,10 @@
 	 
 	 
 		
+			<a class="nav nav-prev" href="/articles/devops/deploy-a-go-web-service-as-an-azure-web-application-using-docker/" title="Deploy a Go Web Service as an Azure Web Application Using Docker"> <i class="fa fa-chevron-left"></i></a>
 		
-			<a class="nav nav-next" href="/getting-started/" title="Cloning editing and re-using this site and its templates" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+			<a class="nav nav-next" href="/articles/devops/vagrant-on-windows/" title="Vagrant on Windows" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>

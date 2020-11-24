@@ -8,6 +8,16 @@
     <language>en-us</language>
     <lastBuildDate>Fri, 10 Apr 2020 12:54:14 +0100</lastBuildDate><atom:link href="https://doc.notapplicable.info/articles/devops/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Vagrant on Windows</title>
+      <link>https://doc.notapplicable.info/articles/devops/vagrant-on-windows/</link>
+      <pubDate>Tue, 24 Nov 2020 11:29:58 +0100</pubDate>
+      
+      <guid>https://doc.notapplicable.info/articles/devops/vagrant-on-windows/</guid>
+      <description>Vagrant is a tool for orchestrating the creation of one or more virtual instances, typically based upon Linux distributions. This article is based upon Ubuntu 1804 but the Vagrantfiles used can be changed to use different distos or boxes - see https://app.vagrantup.com/boxes/search
+Running Ubuntu 1804 or other linux distributions on Windows 10 can be achieved using &amp;lsquo;Windows subsystem for Linux&amp;rsquo; ( WSL ) and this is often a good alternative to running a full blown VM using a hypervisor solution such as VirtualBox or Windows native HypverV.</description>
+    </item>
+    
+    <item>
       <title>Installing OwnCloud using Compose on a server running docker in a home network</title>
       <link>https://doc.notapplicable.info/articles/devops/installing-owncloud-using-compose-and-managing-upgrades/</link>
       <pubDate>Thu, 19 Nov 2020 14:46:58 +0100</pubDate>
@@ -80,6 +90,15 @@ When exposing services to the internet or rather, network sources outside that o
       
       <guid>https://doc.notapplicable.info/articles/devops/deploy-a-go-web-service-as-an-azure-web-application-using-docker/</guid>
       <description>Azure Web Applications can only support a limited number of languages and whilst Go was supported for a time it is no longer so as an alternative is to serve a custom Docker image with a Go web application within it, hosted on a public registry such as Docker Hub or a private one within Azure itself. The following focuses on the use of a private registry hosted in Azure.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://doc.notapplicable.info/articles/devops/raspberri_pi_usb_boot/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://doc.notapplicable.info/articles/devops/raspberri_pi_usb_boot/</guid>
+      <description>32Gig SSD: pi@raspberrypi:~ $ mkdir tmp pi@raspberrypi:~ $ cd tmp pi@raspberrypi:~/tmp $ ls pi@raspberrypi:~/tmp $ sync; dd if=/dev/zero of=tempfile bs=1M count=1024; sync 1024+0 records in 1024+0 records out 1073741824 bytes (1.1 GB, 1.0 GiB) copied, 33.5763 s, 32.0 MB/s pi@raspberrypi:~/tmp $ dd if=tempfile of=/dev/null bs=1M count=1024 1024+0 records in 1024+0 records out 1073741824 bytes (1.1 GB, 1.0 GiB) copied, 2.54035 s, 423 MB/s pi@raspberrypi:~/tmp $ sudo /sbin/sysctl -w vm.drop_caches=3 vm.drop_caches = 3 pi@raspberrypi:~/tmp $ dd if=tempfile of=/dev/null bs=1M count=1024 1024+0 records in 1024+0 records out 1073741824 bytes (1.</description>
     </item>
     
   </channel>

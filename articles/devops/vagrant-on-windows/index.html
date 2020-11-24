@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Tags :: Not Applicable Doc</title>
+    <title>Vagrant on Windows :: Not Applicable Doc</title>
 
     
     <link href="/css/nucleus.css?1606226870" rel="stylesheet">
@@ -36,7 +36,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/tags/">
+  <body class="" data-url="/articles/devops/vagrant-on-windows/">
     <nav id="sidebar" class="">
 
 
@@ -216,7 +216,7 @@
   
     
     <li data-nav-id="/articles/" title="Articles" class="dd-item
-        
+        parent
         
         
         ">
@@ -245,7 +245,7 @@
   
     
     <li data-nav-id="/articles/devops/" title="Devops" class="dd-item
-        
+        parent
         
         
         ">
@@ -271,7 +271,7 @@
  
   
     
-      <li data-nav-id="/articles/devops/vagrant-on-windows/" title="Vagrant on Windows" class="dd-item ">
+      <li data-nav-id="/articles/devops/vagrant-on-windows/" title="Vagrant on Windows" class="dd-item active">
         <a href="/articles/devops/vagrant-on-windows/">
         Vagrant on Windows
         
@@ -512,7 +512,19 @@
             
           
           
-            <a href='/'>Home</a> > Tags
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/'>Home</a> > <a href='/articles/'>Articles</a> > <a href='/articles/devops/'>Devops</a> > Vagrant on Windows
+          
+        
+          
+        
           
         
           
@@ -523,7 +535,15 @@
                 
                     <div class="progress">
     <div class="wrapper">
-
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#prerequisites">Prerequisites</a></li>
+    <li><a href="#download-and-install">Download and install</a></li>
+    <li><a href="#create-a-virtual-instance-of-ubuntu-1804">Create a virtual instance of Ubuntu 1804</a></li>
+    <li><a href="#managing-vagrant-boxes">Managing vagrant boxes</a></li>
+    <li><a href="#adding-optional-features">Adding optional features</a></li>
+  </ul>
+</nav>
     </div>
 </div>
 
@@ -539,24 +559,125 @@
           
             <h1>
               
-                tag ::
-              
-              Tags
+              Vagrant on Windows
             </h1>
           
 
         
 
 
-
-
-
-<ul>
+<div style="text-align: center;">
+<span>
 	
-</ul>
+	Jon Brookes
+	
+</span>
+- 2020-11-24 11:29 
 
 
-<footer class=" footline" >
+</div>
+
+<p>Vagrant is a tool for orchestrating the creation of one or more virtual instances, typically based upon Linux distributions. This article is based upon Ubuntu 1804 but the Vagrantfiles used can be changed to use different distos or boxes - see <a href="https://app.vagrantup.com/boxes/search">https://app.vagrantup.com/boxes/search</a></p>
+<p>Running Ubuntu 1804 or other linux distributions on Windows 10 can be achieved using &lsquo;Windows subsystem for Linux&rsquo; ( WSL ) and this is often a good alternative to running a full blown VM using a hypervisor solution such as VirtualBox or Windows native HypverV. However, WSL is what it says on the tin - its a &lsquo;subsystem&rsquo; and if your needing to test absolutely what happens on a Linux system nothing will be better than a booted running Linux system, albeit running within a virtualization platform. If your choosing to run Windows as a platform to develop Linux upon, Vagrant with Virtualbox or HyperV could be a useful tool to have at ones disposal.</p>
+<p>It is assumed that all command line instructions within this article are run from within a Powershell command line running as an administrative user in either Powershell for desktop or Powershell Core.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>A virtualisation platform, many people use Virtualbox :</p>
+<p><a href="https://www.virtualbox.org/wiki/Downloads">https://www.virtualbox.org/wiki/Downloads</a></p>
+<p>The downloaded installer will require administrative privilege and will require the system to be rebooted to work.</p>
+<p>If you are a pro user of Windows 10 and use hyperv, virtualbox is not going to be an option as the 2 platforms cannot coexist on the same system. This is not a problem though as Vagrant supports hyperv amongst other providers - see <a href="https://www.vagrantup.com/docs/providers">https://www.vagrantup.com/docs/providers</a>.</p>
+<h2 id="download-and-install">Download and install</h2>
+<p>Downloading and installing Vagrant for windows is as simple as for other platforms from</p>
+<p><a href="https://www.vagrantup.com/downloads">https://www.vagrantup.com/downloads</a></p>
+<p>The downloaded installer will require administrative privilege and will also require a reboot to work.</p>
+<h2 id="create-a-virtual-instance-of-ubuntu-1804">Create a virtual instance of Ubuntu 1804</h2>
+<p>Create a directory to run a new Ubuntu 1804 linux configuration from and within this create a new file called <code>Vagrantfile</code> :</p>
+<pre><code>Vagrant.configure(&quot;2&quot;) do |config|
+    config.vm.define &quot;build01&quot; do |build01|
+        build01.vm.box = &quot;generic/ubuntu1804&quot;
+        build01.vm..memory = &quot;4096&quot;
+        build01.vm.hostname = &quot;build01&quot;
+        build01.winrm.username = &quot;vagrant&quot;
+        build01.winrm.password = &quot;vagrant&quot;
+        build01.vm.network &quot;public_network&quot;
+        build01.vm.provider &quot;hyperv&quot; do |h|
+            h.cpus = 4
+            h.maxmemory = 4096
+        end
+    end
+end
+</code></pre><p>start the image with</p>
+<pre><code>vagrant up
+</code></pre><p>if you are using hyperv, vagrant needs to be told to use this rather than the default and if the provider line has not been added to your Vagrantfile</p>
+<pre><code>vagrant up --provider=hyperv
+</code></pre><p>if Vagrant is installed correctly together with virtualbox or hyperv this should complete and the machine will be available over ssh with the user &lsquo;vagrant&rsquo; and password &lsquo;vagrant&rsquo; but a quick way to connect to a console within the same directory is to run :</p>
+<pre><code>vagrant ssh
+</code></pre><p>which gives us an ssh session in which we can access the linux system normally through the shell and <code>sudo -s</code> to switch to the root user etc &hellip;</p>
+<p>to exit, as normal we can just exit the shell with &lsquo;CNTRL-D&rsquo;</p>
+<h2 id="managing-vagrant-boxes">Managing vagrant boxes</h2>
+<p>vagrant has a whole bunch of options and to see these just run <code>vagrant</code> at the command line.</p>
+<p>to finish using and delete the current running system, from within the current directory containing a Vagrantfile run</p>
+<pre><code>vagrant destroy
+</code></pre><p>but it may also be convenient to come back to a running instance in its current state at a later time and for this we can</p>
+<pre><code>vagrant suspend
+</code></pre><p>to &lsquo;suspend&rsquo; the current running image, which is at it suggests, suspends the running VM to be later resumed with :</p>
+<pre><code>vagrant resume
+</code></pre><h2 id="adding-optional-features">Adding optional features</h2>
+<p>the following Vagrantfile adds some features to make working with an Ubuntu 1804 instance a bit more friendly :</p>
+<pre><code>Vagrant.configure(&quot;2&quot;) do |config|
+    config.vm.define &quot;docker01&quot; do |docker01|
+        docker01.vm.box = &quot;generic/ubuntu1804&quot;
+        docker01.vm.provider &quot;hyperv&quot;
+        docker01.vm..memory = &quot;4096&quot;
+        docker01.vm.hostname = &quot;docker01&quot;
+        docker01.winrm.username = &quot;vagrant&quot;
+        docker01.winrm.password = &quot;vagrant&quot;
+        docker01.vm.network &quot;public_network&quot;, bridge: &quot;Default Switch&quot;
+        docker01.vm.provider &quot;hyperv&quot; do |h|
+            h.cpus = 4
+            h.maxmemory = 4096
+        config.env.enable
+        config.vm.provision &quot;shell&quot;, path: &quot;script.sh&quot;
+        config.vm.synced_folder &quot;.&quot;, &quot;/vagrant&quot;, type: &quot;smb&quot;, smb_password: ENV['SMBUserPassword'], smb_username: ENV['SMBUserName']
+        end
+    end
+end
+</code></pre><p>this uses a <code>script.sh</code> file, again in the same directory as is the Vagrantfile :</p>
+<pre><code>apt update -y
+apt upgrade -y
+sudo apt-get install -y \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg-agent \
+    software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository \
+   &quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable&quot;    
+sudo apt-get update -y
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io   
+usermod -aG docker vagrant
+</code></pre><p>which is invoked by vagrant once the machine has been initially stood up - see the line <code>config.vm.provision &quot;shell&quot;, path: &quot;script.sh&quot;</code> for the point at which this is run. The script goes on to update the newly created VM to have the latest updates available at the time and to install docker from the docker repositories.</p>
+<p>Additionally, an &lsquo;SMB share&rsquo; ( windows share ) is &lsquo;mounted&rsquo; by the newly running VM - see the line <code>config.vm.synced_folder &quot;.&quot; ...</code> where this is enabled.</p>
+<p>On the system that this ran from, there is a default network set on the line <code>docker01.vm.network &quot;public_network&quot;, bridge: &quot;Default Switch&quot;</code> which may need to be altered to suit other environments.</p>
+<p>In the powershell session that we are running this from and to get the environment variables to be present and ready for this image to be build, first run something like :</p>
+<pre><code>$Env:SMBUserName = &quot;&lt;your user&gt;@localhost&quot;
+$Env:SMBUserPassword = &quot;&lt;your password&gt;&quot;
+</code></pre><p>and finally build the image with</p>
+<pre><code>vagrant up
+</code></pre><h1 id="references">References</h1>
+<p><a href="https://www.vagrantup.com/docs/networking/public_network">https://www.vagrantup.com/docs/networking/public_network</a></p>
+<p><a href="https://stackoverflow.com/questions/44394725/how-do-i-set-the-smb-username-and-password">https://stackoverflow.com/questions/44394725/how-do-i-set-the-smb-username-and-password</a></p>
+<p><a href="https://www.vagrantup.com/docs/synced-folders/smb.html#smb_username">https://www.vagrantup.com/docs/synced-folders/smb.html#smb_username</a></p>
+<p><a href="https://www.nickhammond.com/configuring-vagrant-virtual-machines-with-env/">https://www.nickhammond.com/configuring-vagrant-virtual-machines-with-env/</a></p>
+<p><a href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_environment_variables?view=powershell-7.1">https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_environment_variables?view=powershell-7.1</a></p>
+
+
+<h2>Comments</h2>
+<div id="remark42"></div>
+
+<footer class="footline">
 	
 </footer>
 
@@ -674,6 +795,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -689,6 +811,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -701,6 +824,7 @@
             
             
                 
+                    
                     
                 
                 
@@ -717,6 +841,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -856,8 +983,10 @@
 	 
 	 
 		
+			<a class="nav nav-prev" href="/articles/devops/" title="Devops"> <i class="fa fa-chevron-left"></i></a>
 		
-			<a class="nav nav-next" href="/getting-started/" title="Cloning editing and re-using this site and its templates" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+			<a class="nav nav-next" href="/articles/devops/installing-owncloud-using-compose-and-managing-upgrades/" title="Installing OwnCloud using Compose on a server running docker in a home network" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
