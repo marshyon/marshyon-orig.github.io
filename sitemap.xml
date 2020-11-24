@@ -43,6 +43,11 @@
   </url>
   
   <url>
+    <loc>https://doc.notapplicable.info/articles/devops/vagrant-on-windows/</loc>
+    <lastmod>2020-11-24T11:29:58+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://doc.notapplicable.info/articles/devops/installing-owncloud-using-compose-and-managing-upgrades/</loc>
     <lastmod>2020-11-19T14:46:58+01:00</lastmod>
   </url>
@@ -75,6 +80,10 @@
   <url>
     <loc>https://doc.notapplicable.info/articles/devops/deploy-a-go-web-service-as-an-azure-web-application-using-docker/</loc>
     <lastmod>2020-04-10T12:54:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://doc.notapplicable.info/articles/devops/raspberri_pi_usb_boot/</loc>
   </url>
   
   <url>
